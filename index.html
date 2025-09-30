@@ -1,7 +1,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Blend Especial - Primeiro lote de Outubro - Pré-venda Exclusiva</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -70,6 +70,7 @@
             cursor: grab;
             position: relative;
             overflow: hidden;
+            align-items: center; /* Centraliza verticalmente */
         }
         .cards-track.grabbing {
             cursor: grabbing;
@@ -78,7 +79,7 @@
 
         .card {
             min-height: 100vh;
-            width: 100%;
+            width: 100vw;
             padding: 70px 20px 20px; /* Ajuste para o header fixo */
             display: flex;
             flex-direction: column;
@@ -87,8 +88,11 @@
             text-align: center;
             color: white;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            box-sizing: border-box;
             z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+            scroll-snap-align: start;
         }
         
         /* Estilos para os elementos de fundo dos cards */
@@ -825,10 +829,32 @@
             font-size: 1.1em;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .card h1, .card h2 {
-                font-size: 2em;
+        /* Ajustes para dispositivos móveis */
+        @media (max-width: 767px) {
+            .card {
+                padding: 60px 15px 15px;
+                justify-content: flex-start;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .card h1 {
+                font-size: 1.8rem;
+                margin: 10px 0 15px;
+                line-height: 1.3;
+            }
+            
+            .card-content {
+                width: 100%;
+                max-width: 100%;
+                padding: 0 10px;
+                box-sizing: border-box;
+            }
+            
+            .card-main {
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 15px;
             }
             
             .card p {
@@ -1445,8 +1471,9 @@
 
         // Funções de Navegação
         function updateCardPosition() {
-            const translateX = -currentCard * 100;
-            cardsTrack.style.transform = `translateX(${translateX}vw)`;
+            const cardWidth = window.innerWidth;
+            const translateX = -currentCard * cardWidth;
+            cardsTrack.style.transform = `translateX(${translateX}px)`;
             
             dots.forEach((dot, index) => {
                 if (index === currentCard) {
