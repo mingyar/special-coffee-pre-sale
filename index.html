@@ -1,0 +1,1625 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blend Especial - Primeiro lote de Outubro - Pré-venda Exclusiva</title>
+    <style>
+        /* Reset e Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            overflow-x: hidden;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Barra de Instrução */
+        .instruction-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px 12px;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 1000; /* Garante que fique acima de tudo */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .instruction-bar span {
+            display: inline-block;
+            animation: slideHint 2s infinite;
+        }
+
+        @keyframes slideHint {
+            0%, 100% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+        }
+
+        /* Container Principal */
+        .main-container {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        /* Track de Cards */
+        .cards-track {
+            display: flex;
+            width: 800vw; /* 8 cards x 100vw cada */
+            height: 100vh;
+            transition: transform 0.5s ease-out;
+            will-change: transform;
+            cursor: grab;
+            position: relative;
+            overflow: hidden;
+        }
+        .cards-track.grabbing {
+            cursor: grabbing;
+            transition: none;
+        }
+
+        .card {
+            min-height: 100vh;
+            width: 100%;
+            padding: 70px 20px 20px; /* Ajuste para o header fixo */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+        }
+        
+        /* Estilos para os elementos de fundo dos cards */
+        .card-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .card-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            z-index: 1;
+        }
+        
+        .card-bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+        
+        /* Garante que o conteúdo do card fique acima do fundo */
+        .card > *:not(.card-bg-container) {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Estilos base para os cards */
+
+        @media (min-width: 768px) {
+            .card {
+                padding: 120px 40px 100px;
+            }
+        }
+
+        /* Estilos específicos dos cards */
+        /* Card 0 - Header Principal */
+        .card-0 { 
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.85), rgba(247, 147, 30, 0.85));
+        }
+
+        /* Card 1 - Blend Exclusivo */
+        .card-1 { 
+            position: relative; 
+            color: white;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.8));
+        }
+
+        /* Card 2 - Torra Artesanal */
+        .card-2 { 
+            position: relative; 
+            color: white;
+            background: linear-gradient(135deg, rgba(101, 67, 33, 0.8), rgba(139, 69, 19, 0.8));
+        }
+
+        /* Card 3 - Origem Certificada */
+        .card-3 { 
+            position: relative; 
+            color: white;
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.75), rgba(60, 179, 113, 0.75));
+        }
+
+        /* Card 4 - Lote Limitado */
+        .card-4 { 
+            position: relative; 
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.85), rgba(101, 67, 33, 0.9));
+        }
+        
+        .card-4 h2 {
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .card-4 p {
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+        /* Card 5 - Urgência */
+        .card-5 { 
+            position: relative; 
+            color: white;
+            background: none; /* Removendo o gradiente fixo para a imagem aparecer */
+            overflow: hidden;
+        }
+        
+        .card-5 .card-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .card-5 .card-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+        
+        .card-5 .card-bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+            z-index: 2;
+        }
+        
+        .card-5 > *:not(.card-bg-container),
+        .card-6 > *:not(.card-bg-container),
+        .card-7 > *:not(.card-bg-container) {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Estilos específicos para o card 7 */
+        .card-7 .card-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .card-7 .card-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+        
+        .card-7 .card-bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+            z-index: 2;
+        }
+        
+        /* Estilos específicos para o card 6 (formulário) */
+        .card-6 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        .card-6 .card-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .card-6 .card-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+        
+        .card-6 .card-bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85));
+            z-index: 2;
+        }
+        
+        /* Container do Formulário */
+        .card-6 .form-container {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza todos os itens */
+        }
+        
+        .card-6 h2 {
+            color: #fff !important;
+            text-align: center;
+            margin: 0 0 25px 0 !important;
+            font-size: 1.4em !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+            line-height: 1.3;
+            width: 100%;
+            white-space: nowrap;
+        }
+        
+        /* Estilos dos Campos do Formulário */
+        .card-6 .form-row {
+            display: flex;
+            margin: 0 0 15px;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .card-6 .form-group {
+            margin: 0 auto 15px;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center; /* Centraliza o conteúdo */
+            gap: 10px;
+        }
+        
+        .card-6 label {
+            min-width: 100px;
+            text-align: right; /* Mantém o alinhamento do texto do label à direita */
+            margin: 0;
+            color: #fff;
+            font-size: 0.95em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        .card-6 .form-group:not(:last-child) {
+            margin-bottom: 18px;
+        }
+        
+        .card-6 label {
+            display: inline-block;
+            margin: 0;
+            font-weight: 500;
+            color: #fff !important;
+            font-size: 0.95em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+            letter-spacing: 0.3px;
+            width: 100px;
+            flex-shrink: 0;
+            text-align: right;
+        }
+        
+        .card-6 label {
+            color: #fff !important;
+            font-weight: 500;
+            min-width: 100px;
+            text-align: right;
+            font-size: 0.95em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .card-6 input,
+        .card-6 select {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.15) !important;
+            color: #fff !important;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            height: 44px;
+            max-width: 100%;
+        }
+        
+        .card-6 input:focus,
+        .card-6 select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        .card-6 input::placeholder {
+            color: rgba(255, 255, 255, 0.7) !important;
+            opacity: 1;
+        }
+        
+        /* Botão de Envio */
+        .card-6 .submit-btn {
+            background: linear-gradient(45deg, #ffd700, #ffb700);
+            color: #2c3e50 !important;
+            border: none;
+            padding: 12px 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px; /* Mesma largura máxima dos campos */
+            margin: 15px auto 0; /* Centraliza o botão */
+            transition: all 0.3s ease;
+            text-shadow: none !important;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-6 .submit-btn span {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-6 .submit-btn .btn-subtext {
+            font-size: 0.7em;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-top: 4px;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 8px;
+            opacity: 0;
+        }
+        
+        .card-6 .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            padding-bottom: 30px;
+        }
+        
+        .card-6 .submit-btn:hover .btn-subtext {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .card-6 .submit-btn:hover span:first-child {
+            transform: translateY(-5px);
+        }
+        
+        .card-6 .submit-btn:active {
+            transform: translateY(1px);
+        }
+        
+        /* Estilo para o select */
+        .card-6 select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 15px center !important;
+            background-size: 20px !important;
+            padding-right: 45px !important;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .card-6 .form-container {
+                padding: 20px 15px;
+                margin: 0 auto;
+                width: calc(100% - 40px);
+                max-width: 100%;
+            }
+            
+            .card-6 h2 {
+                font-size: 1.3em !important;
+                margin: 0 auto 15px !important;
+                text-align: center !important;
+                line-height: 1.3;
+                max-width: 90%;
+                width: 100%;
+                align-self: center;
+            }
+            
+            .card-6 .form-group {
+                flex-direction: column;
+                align-items: center; /* Centraliza itens em telas menores */
+                margin: 0 auto 15px;
+                width: 100%;
+                max-width: 300px;
+                gap: 5px;
+            }
+            
+            .card-6 label {
+                text-align: left;
+                min-width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .card-6 label {
+                text-align: left;
+                width: 100%;
+                margin-bottom: 2px;
+                font-size: 0.9em;
+            }
+            
+            .card-6 input,
+            .card-6 select {
+                width: 100%;
+                min-width: 100%;
+                height: 42px;
+                margin: 0;
+            }
+            
+            .card-6 .submit-btn {
+                padding: 12px 15px;
+                width: 100%;
+                max-width: 300px; /* Mantém a largura máxima em telas menores */
+                margin: 15px auto 0; /* Centraliza o botão */
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        }
+        
+        /* Garantir que o conteúdo do card 7 seja visível sobre o fundo */
+        .card-7 h2,
+        .card-7 p,
+        .card-7 .contact-buttons {
+            position: relative;
+            z-index: 3;
+            color: white !important;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+        }
+        
+        .card-5 h2 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card-5 p {
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* Card 6 - Formulário */
+        .card-6 { 
+            position: relative; 
+            color: #333;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+        }
+
+        /* Card 7 - Contato */
+        .card-7 { 
+            position: relative; 
+            color: white;
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.85), rgba(47, 79, 79, 0.85));
+        }
+
+        /* Conteúdo dos Cards */
+        .card h1, .card h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .card p {
+            font-size: 1.2em;
+            max-width: 90%;
+            margin: 0 auto 20px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .card .emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+
+        /* Formulário */
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 25px;
+            max-width: 216px; /* 360px * 0.6 (40% reduction) */
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .form-container {
+                padding: 35px;
+                max-width: 390px; /* 650px * 0.6 (40% reduction) */
+                width: auto;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .form-group label {
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 0.9em;
+            width: 90px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .form-group input,
+        .form-group select {
+            flex: 1;
+            padding: 8px 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            min-height: 40px;
+            background: white;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn.success {
+            background: #28a745;
+        }
+
+        /* Botões de Contato */
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .contact-btn i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Navegação por Pontos */
+        .navigation-dots {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: none;
+            padding: 0;
+        }
+
+        .dot::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active::before {
+            background: rgba(255,255,255,0.8);
+            transform: scale(1.5);
+        }
+
+        /* Áreas de Toque */
+        .touch-area {
+            position: fixed;
+            top: 100px;
+            bottom: 100px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+            cursor: pointer;
+        }
+
+        .touch-left {
+            left: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0.1), transparent);
+        }
+
+        .touch-right {
+            right: 0;
+            background: linear-gradient(-90deg, rgba(0,0,0,0.1), transparent);
+        }
+
+        /* Timer Box */
+        .timer-box {
+            background: rgba(0,0,0,0.2);
+            border-radius: 25px;
+            padding: 15px 25px;
+            margin: 20px 0;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .card h1, .card h2 {
+                font-size: 2em;
+            }
+            
+            .card p {
+                font-size: 1em;
+            }
+            
+            .emoji {
+                font-size: 3em !important;
+            }
+            
+            .form-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .form-group label {
+                width: 100%;
+                text-align: left;
+                margin-bottom: 5px;
+            }
+            
+            .form-group input,
+            .form-group select {
+                width: 100%;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="instruction-bar">
+        <span>👉 Deslize para conhecer o blend exclusivo 👈</span>
+    </div>
+
+    <div class="main-container">
+        <div class="cards-track" id="cardsTrack">
+            <!-- Card 0 - Header Principal -->
+            <div class="card card-0">
+                <h1>🏄‍♂️ Primeiro lote de Outubro</h1>
+                <p>Tem café fresco chegando!!!</p>
+                <div class="badge">✨ LOTE LIMITADO ✨</div>
+                <p style="opacity: 0.7; margin-top: 20px;">👉 Deslize para descobrir</p>
+            </div>
+
+            <!-- Card 1 - Blend Exclusivo -->
+            <div class="card card-1">
+                <span class="emoji">⭐</span>
+                <h2>Blend exclusivo</h2>
+                <div style="font-size: 2em; color: #ffd700; font-weight: bold; margin: 10px 0;">89 pontos SCA</div>
+                <p>Um blend especial para quem aprecia<br>café de verdade e vive conectado com o mar</p>
+            </div>
+
+            <!-- Card 2 - Torra Artesanal -->
+            <div class="card card-2">
+                <span class="emoji">🔥</span>
+                <h2>Torra artesanal</h2>
+                <p>Processo desenvolvido especialmente para destacar<br>as notas naturais e criar uma experiência única na xícara</p>
+            </div>
+
+            <!-- Card 3 - Origem Certificada -->
+            <div class="card card-3">
+                <span class="emoji">🏆</span>
+                <h2>Origem certificada</h2>
+                <p>Produtores confiáveis com rastreabilidade completa,<br>garantindo qualidade desde o cultivo até sua xícara</p>
+            </div>
+            <!-- Card 4 - Lote Limitado -->
+            <div class="card card-4" style="color: #333;">
+                <span class="emoji">📦</span>
+                <h2>Lote limitado</h2>
+                <p>A quantidade deste lote é restrita.<br>Uma vez esgotado, você terá que aguardar<br>o próximo lote chegar</p>
+            </div>
+
+            <!-- Card 5 - Urgência -->
+            <div class="card card-5">
+                <h2>⚡ Atenção!</h2>
+                <p>Os valores de pré-venda são como uma<br>onda perfeita: aparecem poucas vezes e quem<br>não pega, fica só olhando...</p>
+                <p>Garanta sua reserva com condições<br>especiais antes que chegue ao público geral!</p>
+                <div class="timer-box">🕒 Pré-venda por tempo limitado!</div>
+            </div>
+
+            <!-- Card 6 - Formulário -->
+            <div class="card card-6">
+                <div class="form-container">
+                    <h2>Garanta já a sua reserva!</h2>
+                    <form id="preOrderForm">
+                        <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp:</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" inputmode="numeric" pattern="[0-9()\-+ ]*" placeholder="(00) 00000-0000" required autocomplete="tel">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade:</label>
+                            <select id="quantidade" name="quantidade" required aria-required="true" style="flex: 1;">
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="1 pacote - Experimentar">1 pacote</option>
+                                <option value="2 pacotes - Curtir bem">2 pacotes</option>
+                                <option value="3 pacotes - Estocar">3 pacotes</option>
+                                <option value="5 pacotes - Viciado">5 pacotes</option>
+                                <option value="10 pacotes - Revendedor">10 pacotes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="regiao">Região:</label>
+                            <select id="regiao" name="regiao" required aria-required="true" style="flex: 1;">
+                                <option value="" disabled selected>Sua região</option>
+                                <option value="Ponta das Canas">Ponta das Canas</option>
+                                <option value="Cachoeira">Cachoeira</option>
+                                <option value="Canasvieiras">Canasvieiras</option>
+                                <option value="Ingleses">Ingleses</option>
+                                <option value="Jurêre">Jurêre</option>
+                                <option value="Amigos/Parceiros">Amigos/Parceiros</option>
+                                <option value="Turismo/Outros">Turismo/Outros</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitBtn" aria-label="Enviar reserva">
+                            <span>🏄‍♂️ Garantir minha reserva! ☕</span>
+                            <span class="btn-subtext">Enviar agora</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Card 7 - Contato -->
+            <div class="card card-7">
+                <h2>Entre em contato</h2>
+                <p>Dúvidas? Fale conosco pelo<br>WhatsApp ou Instagram!</p>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/5541999204621" class="contact-btn whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://instagram.com/mingyar_" class="contact-btn instagram-btn" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Áreas de Toque -->
+        <div class="touch-area touch-left" id="touchLeft"></div>
+        <div class="touch-area touch-right" id="touchRight"></div>
+
+        <!-- Navegação por Pontos -->
+        <div class="navigation-dots" id="navigationDots">
+            <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="dot" data-index="2" aria-label="Slide 3"></button>
+            <button class="dot" data-index="3" aria-label="Slide 4"></button>
+            <button class="dot" data-index="4" aria-label="Slide 5"></button>
+            <button class="dot" data-index="5" aria-label="Slide 6"></button>
+            <button class="dot" data-index="6" aria-label="Slide 7"></button>
+            <button class="dot" data-index="7" aria-label="Slide 8"></button>
+        </div>
+    </div>
+
+    <script>
+        // Variáveis Globais
+        let currentCard = 0;
+        const totalCards = 8;
+        const cardsTrack = document.getElementById('cardsTrack');
+        const dots = document.querySelectorAll('.dot');
+        const touchLeft = document.getElementById('touchLeft');
+        const touchRight = document.getElementById('touchRight');
+        let startX = 0;
+        let isDragging = false;
+        let isMouseDown = false;
+        let startTranslateX = 0;
+
+        // Função para verificar carregamento de imagens
+        function preloadImages() {
+            const imageUrls = [
+                'https://picsum.photos/1920/1080?random=1',
+                'https://images.unsplash.com/photo-1605374179215-TaFr0XnSFFs?w=1920&q=80',
+                'https://images.unsplash.com/photo-1620706857370-AZJrf0D6Vfo?w=1920&q=80',
+                'https://images.unsplash.com/photo-1659886251794-irAoAvAHRyI?w=1920&q=80',
+                'https://images.unsplash.com/photo-1734007902996-0czHAdon3js?w=1920&q=80',
+                'https://images.unsplash.com/photo-1505459668311-KXW7vHADtwc?w=1920&q=80',
+                'https://images.unsplash.com/photo-1659021076840-H80RH1Hhvu8?w=1920&q=80',
+                'https://images.unsplash.com/photo-1643575855427-H4P5QIZnOz0?w=1920&q=80'
+            ];
+
+            imageUrls.forEach((url, index) => {
+                const img = new Image();
+                img.src = url;
+                img.onload = () => console.log(`Imagem ${index + 1} carregada:`, url);
+                img.onerror = () => console.error(`Erro ao carregar imagem ${index + 1}:`, url);
+            });
+        }
+
+        // Verificar se as imagens de fundo estão sendo aplicadas
+        function checkBackgroundImages() {
+            console.log('Verificando imagens de fundo...');
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                const bgImage = window.getComputedStyle(card, '::before').backgroundImage;
+                console.log(`Card ${index} background:`, bgImage);
+                
+                // Verificar se o pseudo-elemento está sendo aplicado
+                const beforeStyle = window.getComputedStyle(card, '::before');
+                console.log(`Card ${index} before content:`, beforeStyle.content);
+                console.log(`Card ${index} before display:`, beforeStyle.display);
+                console.log(`Card ${index} before visibility:`, beforeStyle.visibility);
+                
+                // Forçar repaint para garantir que os estilos sejam aplicados
+                card.style.display = 'none';
+                card.offsetHeight; // Trigger reflow
+                card.style.display = '';
+            });
+        }
+
+        // Função para verificar se as imagens de fundo foram carregadas
+        function checkBackgroundImagesLoaded() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                const style = window.getComputedStyle(card);
+                const bgImage = style.backgroundImage;
+                console.log(`Card ${index} background:`, bgImage);
+                
+                // Verificar se a imagem de fundo foi carregada
+                if (bgImage && bgImage !== 'none') {
+                    const img = new Image();
+                    img.onload = function() {
+                        console.log(`Imagem de fundo do Card ${index} carregada com sucesso`);
+                        // Forçar repaint
+                        card.style.display = 'none';
+                        card.offsetHeight; // Trigger reflow
+                        card.style.display = '';
+                    };
+                    img.onerror = function() {
+                        console.error(`Erro ao carregar imagem de fundo do Card ${index}`);
+                    };
+                    // Extrair a URL da imagem de fundo
+                    const match = bgImage.match(/url\(["']?(.*?)["']?\)/);
+                    if (match && match[1]) {
+                        img.src = match[1].replace(/['"]/g, '');
+                    }
+                }
+            });
+        }
+
+        // Função para aplicar imagens de fundo via JavaScript
+        function applyBackgroundImages() {
+            // Aplicar o mesmo padrão do primeiro card para todos os cards
+            document.querySelectorAll('.card').forEach((card, index) => {
+                const images = [
+                    'https://picsum.photos/id/1060/1920/1080',  // Café em grãos
+                    'https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=1920&q=80',   // Grãos de café selecionados para blend
+                    'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=1920&q=80',  // Máquina de torrar café profissional
+                    'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920&q=80',   // Plantação de café
+                    'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=1920&q=80',  // Café em embalagem de lote limitado
+                    'https://picsum.photos/id/1052/1920/1080',  // Imagem de mar (fallback)
+                    'https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?w=1920&q=80',  // Onda do mar poderosa
+                    'https://images.pexels.com/photos/561463/pexels-photo-561463.jpeg?auto=compress&cs=tinysrgb&w=1920'   // Vista do oceano no pôr do sol
+                ];
+                
+                // Se for o card 5 (Atenção!), usar a imagem fornecida diretamente
+                if (index === 5) {
+                    const waveImage = 'https://images.pexels.com/photos/416676/pexels-photo-416676.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                    images[5] = waveImage;
+                    
+                    // Aplicar a imagem diretamente ao card
+                    const bgContainer = document.createElement('div');
+                    bgContainer.className = 'card-bg-container';
+                    
+                    const bgImage = document.createElement('div');
+                    bgImage.className = 'card-bg-image';
+                    bgImage.style.backgroundImage = `url('${waveImage}')`;
+                    
+                    const bgGradient = document.createElement('div');
+                    bgGradient.className = 'card-bg-gradient';
+                    
+                    // Limpar o card primeiro
+                    const oldContainer = card.querySelector('.card-bg-container');
+                    if (oldContainer) {
+                        card.removeChild(oldContainer);
+                    }
+                    
+                    // Adicionar os novos elementos
+                    bgContainer.appendChild(bgImage);
+                    bgContainer.appendChild(bgGradient);
+                    card.insertBefore(bgContainer, card.firstChild);
+                    
+                    console.log('Imagem de onda aplicada diretamente ao card 5');
+                    return; // Sair da iteração para este card
+                }
+                
+                // Se for o card 6 (índice 6), que é o card do formulário
+                if (index === 6) {
+                    const formImage = 'https://images.pexels.com/photos/9716777/pexels-photo-9716777.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                    
+                    // Aplicar a imagem diretamente ao card
+                    const bgContainer = document.createElement('div');
+                    bgContainer.className = 'card-bg-container';
+                    
+                    const bgImage = document.createElement('div');
+                    bgImage.className = 'card-bg-image';
+                    bgImage.style.backgroundImage = `url('${formImage}')`;
+                    
+                    const bgGradient = document.createElement('div');
+                    bgGradient.className = 'card-bg-gradient';
+                    
+                    // Limpar o card primeiro
+                    const oldContainer = card.querySelector('.card-bg-container');
+                    if (oldContainer) {
+                        card.removeChild(oldContainer);
+                    }
+                    
+                    // Adicionar os novos elementos
+                    bgContainer.appendChild(bgImage);
+                    bgContainer.appendChild(bgGradient);
+                    card.insertBefore(bgContainer, card.firstChild);
+                    
+                    console.log('Imagem do formulário aplicada diretamente ao card 6');
+                    return; // Sair da iteração para este card
+                }
+                
+                // Se for o card 7 (índice 7), que é o card de contato
+                if (index === 7) {
+                    const oceanImage = 'https://images.pexels.com/photos/561463/pexels-photo-561463.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                    
+                    // Aplicar a imagem diretamente ao card
+                    const bgContainer = document.createElement('div');
+                    bgContainer.className = 'card-bg-container';
+                    
+                    const bgImage = document.createElement('div');
+                    bgImage.className = 'card-bg-image';
+                    bgImage.style.backgroundImage = `url('${oceanImage}')`;
+                    
+                    const bgGradient = document.createElement('div');
+                    bgGradient.className = 'card-bg-gradient';
+                    
+                    // Limpar o card primeiro
+                    const oldContainer = card.querySelector('.card-bg-container');
+                    if (oldContainer) {
+                        card.removeChild(oldContainer);
+                    }
+                    
+                    // Adicionar os novos elementos
+                    bgContainer.appendChild(bgImage);
+                    bgContainer.appendChild(bgGradient);
+                    card.insertBefore(bgContainer, card.firstChild);
+                    
+                    console.log('Imagem de oceano aplicada diretamente ao card 8');
+                    return; // Sair da iteração para este card
+                }
+                
+                // Remover estilos de fundo existentes
+                card.style.backgroundImage = 'none';
+                card.style.background = 'none';
+                
+                // Criar um contêiner para a imagem de fundo
+                let bgContainer = document.createElement('div');
+                bgContainer.className = 'card-bg-container';
+                
+                // Criar elemento de imagem
+                let bgImage = document.createElement('div');
+                bgImage.className = 'card-bg-image';
+                const imageUrl = images[index];
+                console.log(`Aplicando imagem para card ${index}:`, imageUrl);
+                
+                // Criar um objeto de imagem para pré-carregar e verificar erros
+                const img = new Image();
+                img.onload = function() {
+                    // Se a imagem carregar com sucesso, aplicar ao fundo
+                    bgImage.style.backgroundImage = `url('${imageUrl}')`;
+                };
+                img.onerror = function() {
+                    // Se houver erro ao carregar a imagem, usar fallback
+                    console.error(`Erro ao carregar imagem para card ${index}:`, imageUrl);
+                    bgImage.style.backgroundImage = 'url(https://picsum.photos/id/1052/1920/1080)';
+                };
+                img.src = imageUrl;
+                
+                // Criar elemento de gradiente
+                let bgGradient = document.createElement('div');
+                bgGradient.className = 'card-bg-gradient';
+                
+                // Adicionar elementos ao container
+                bgContainer.appendChild(bgImage);
+                bgContainer.appendChild(bgGradient);
+                
+                // Remover container antigo se existir
+                const oldContainer = card.querySelector('.card-bg-container');
+                if (oldContainer) {
+                    card.removeChild(oldContainer);
+                }
+                
+                // Adicionar novo container
+                card.insertBefore(bgContainer, card.firstChild);
+                
+                console.log(`Fundo aplicado para ${card.className}`, bgImage.style.backgroundImage);
+            });
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM totalmente carregado');
+            
+            // Primeiro, aplicar as imagens de fundo
+            console.log('Aplicando imagens de fundo...');
+            applyBackgroundImages();
+            
+            // Verificar se as imagens foram aplicadas
+            setTimeout(() => {
+                console.log('Verificando imagens de fundo...');
+                document.querySelectorAll('.card').forEach((card, index) => {
+                    const bgImage = card.querySelector('.card-bg-image');
+                    console.log(`Card ${index}:`, {
+                        hasBgContainer: !!card.querySelector('.card-bg-container'),
+                        hasBgImage: !!bgImage,
+                        bgImageStyle: bgImage ? bgImage.style.backgroundImage : 'none',
+                        bgGradient: card.querySelector('.card-bg-gradient').style.backgroundImage
+                    });
+                });
+            }, 500);
+            
+            // Depois, pré-carregar as imagens
+            preloadImages();
+            
+            // Configurar o restante
+            updateCardPosition();
+            setupEventListeners();
+            setupForm();
+            setupTouchAreas();
+            
+            // Adiciona classe de animação após o carregamento
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.card > *');
+                cards.forEach((card, index) => {
+                    card.classList.add('fade-in');
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+            }, 100);
+        });
+
+        // Configuração dos Event Listeners
+        function setupEventListeners() {
+            // Eventos de Toque
+            cardsTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
+            cardsTrack.addEventListener('touchmove', handleTouchMove, { passive: false });
+            cardsTrack.addEventListener('touchend', handleTouchEnd);
+
+            // Eventos de Mouse - Apenas para áreas que não são inputs/buttons/selects
+            cardsTrack.addEventListener('mousedown', function(e) {
+                // Permite interação normal com elementos de formulário
+                if (e.target.matches('input, select, button, textarea, a, label[for]')) {
+                    return;
+                }
+                handleMouseDown(e);
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (isMouseDown) {
+                    handleMouseMove(e);
+                }
+            });
+            
+            document.addEventListener('mouseup', function(e) {
+                if (isMouseDown) {
+                    handleMouseUp(e);
+                }
+            });
+
+            // Eventos de Teclado
+            document.addEventListener('keydown', handleKeyDown);
+
+            // Navegação por Dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    goToCard(index);
+                });
+            });
+
+            // Prevenção de menu de contexto em mobile
+            document.addEventListener('contextmenu', function(e) {
+                if (e.target.closest('.cards-track')) {
+                    e.preventDefault();
+                }
+            });
+        }
+
+        // Configuração do Formulário
+        function setupForm() {
+            const form = document.getElementById('preOrderForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const whatsappInput = document.getElementById('whatsapp');
+
+            // Máscara do WhatsApp
+            whatsappInput.addEventListener('input', function(e) {
+                // Armazena a posição do cursor
+                const cursorPosition = e.target.selectionStart;
+                let value = e.target.value;
+                const originalLength = value.length;
+                
+                // Remove todos os caracteres não numéricos
+                const numbers = value.replace(/\D/g, '');
+                
+                // Aplica a formatação
+                let formatted = '';
+                if (numbers.length <= 11) {
+                    // Formato: (99) 99999-9999
+                    formatted = numbers.replace(/^(\d{0,2})?(\d{0,5})?(\d{0,4})?.*/, function(match, g1, g2, g3) {
+                        let result = '';
+                        if (g1) result += `(${g1}`;
+                        if (g2) result += `) ${g2}`;
+                        if (g3) result += `-${g3}`;
+                        return result;
+                    });
+                } else {
+                    // Formato internacional: +99 (99) 99999-9999
+                    formatted = numbers.replace(/^(\d{0,2})?(\d{0,2})?(\d{0,5})?(\d{0,4})?.*/, function(match, g1, g2, g3, g4) {
+                        let result = '';
+                        if (g1) result += `+${g1}`;
+                        if (g2) result += ` (${g2}`;
+                        if (g3) result += `) ${g3}`;
+                        if (g4) result += `-${g4}`;
+                        return result;
+                    });
+                }
+                
+                // Atualiza o valor apenas se for diferente para evitar conflitos
+                if (e.target.value !== formatted) {
+                    e.target.value = formatted;
+                    
+                    // Ajusta a posição do cursor
+                    const diff = formatted.length - originalLength;
+                    e.target.setSelectionRange(cursorPosition + diff, cursorPosition + diff);
+                }
+            });
+
+            // Envio do Formulário
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const nome = document.getElementById('nome').value.trim();
+                const whatsapp = document.getElementById('whatsapp').value.trim();
+                const quantidade = document.getElementById('quantidade').value;
+                const regiao = document.getElementById('regiao').value;
+                
+                // Validação
+                if (!nome || !whatsapp || !quantidade || !regiao) {
+                    alert('Por favor, preencha todos os campos!');
+                    return;
+                }
+                
+                // Validação mais flexível do WhatsApp
+                const whatsappDigits = whatsapp.replace(/\D/g, '');
+                if (whatsappDigits.length < 10 || whatsappDigits.length > 13) {
+                    alert('Por favor, digite um número de WhatsApp válido com DDD (ex: 99 99999-9999)');
+                    return;
+                }
+                
+                // Construir a mensagem para o WhatsApp
+                let mensagem = [];
+                mensagem.push('*RESERVA - BLEND ESPECIAL*');
+                mensagem.push('*Primeiro lote de Outubro*');
+                mensagem.push(''); // linha em branco
+                mensagem.push('*Nome:* ' + nome);
+                mensagem.push('*WhatsApp:* ' + whatsapp);
+                mensagem.push('*Quantidade:* ' + quantidade);
+                mensagem.push('*Região:* ' + regiao);
+                mensagem.push(''); // linha em branco
+                mensagem.push('Olá! Quero reservar meu café especial do novo lote! Quando estará disponível?');
+                
+                // Juntar com quebras de linha e codificar
+                const mensagemCodificada = encodeURIComponent(mensagem.join('\n'));
+                
+                // Abrir WhatsApp
+                const url = `https://wa.me/5541999204621?text=${mensagemCodificada}`;
+                window.open(url, '_blank');
+                
+                // Feedback visual
+                submitBtn.textContent = '✅ Reserva Enviada!';
+                submitBtn.classList.add('success');
+                
+                // Reset após 3 segundos
+                setTimeout(function() {
+                    form.reset();
+                    submitBtn.innerHTML = '🏄‍♂️ Garantir minha reserva! ☕';
+                    submitBtn.classList.remove('success');
+                }, 3000);
+            });
+        }
+
+        // Configuração das Áreas de Toque
+        function setupTouchAreas() {
+            touchLeft.addEventListener('click', previousCard);
+            touchRight.addEventListener('click', nextCard);
+            
+            // Mostrar/ocultar áreas de toque em desktop
+            if (window.innerWidth > 768) {
+                document.addEventListener('mousemove', function(e) {
+                    const isNearLeft = e.clientX < 100;
+                    const isNearRight = e.clientX > window.innerWidth - 100;
+                    
+                    touchLeft.style.opacity = isNearLeft ? '1' : '0';
+                    touchRight.style.opacity = isNearRight ? '1' : '0';
+                });
+            }
+        }
+
+        // Funções de Navegação
+        function updateCardPosition() {
+            const translateX = -currentCard * 100;
+            cardsTrack.style.transform = `translateX(${translateX}vw)`;
+            
+            dots.forEach((dot, index) => {
+                if (index === currentCard) {
+                    dot.classList.add('active');
+                    dot.setAttribute('aria-current', 'true');
+                } else {
+                    dot.classList.remove('active');
+                    dot.removeAttribute('aria-current');
+                }
+            });
+            
+            // Atualizar título da página
+            const titles = [
+                'Blend Especial - Primeiro lote de Outubro',
+                'Blend Exclusivo - 89 pontos SCA',
+                'Torra Artesanal',
+                'Origem Certificada',
+                'Lote Limitado',
+                'Oferta por Tempo Limitado',
+                'Faça sua Reserva',
+                'Entre em Contato'
+            ];
+            document.title = titles[currentCard];
+        }
+
+        function nextCard() {
+            if (currentCard < totalCards - 1) {
+                currentCard++;
+                updateCardPosition();
+            }
+        }
+
+        function previousCard() {
+            if (currentCard > 0) {
+                currentCard--;
+                updateCardPosition();
+            }
+        }
+
+        function goToCard(index) {
+            if (index >= 0 && index < totalCards) {
+                currentCard = index;
+                updateCardPosition();
+            }
+        }
+
+        // Handlers de Toque
+        function handleTouchStart(e) {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            startTranslateX = -currentCard * 100;
+            cardsTrack.style.transition = 'none';
+            cardsTrack.classList.add('grabbing');
+        }
+
+        function handleTouchMove(e) {
+            if (!isDragging) return;
+            
+            e.preventDefault();
+            const currentX = e.touches[0].clientX;
+            const deltaX = currentX - startX;
+            const deltaPercent = (deltaX / window.innerWidth) * 100;
+            
+            cardsTrack.style.transform = `translateX(${startTranslateX + deltaPercent}vw)`;
+        }
+
+        function handleTouchEnd(e) {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            cardsTrack.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            cardsTrack.classList.remove('grabbing');
+            
+            const currentX = e.changedTouches[0].clientX;
+            const deltaX = currentX - startX;
+            const threshold = window.innerWidth * 0.2;
+            
+            if (deltaX > threshold && currentCard > 0) {
+                previousCard();
+            } else if (deltaX < -threshold && currentCard < totalCards - 1) {
+                nextCard();
+            } else {
+                updateCardPosition();
+            }
+        }
+
+        // Handlers de Mouse
+        function handleMouseDown(e) {
+            if (e.button !== 0) return; // Apenas botão esquerdo
+            
+            // Não previne o comportamento padrão para permitir seleção de texto e interação com formulários
+            startX = e.clientX;
+            isMouseDown = true;
+            startTranslateX = -currentCard * 100;
+            cardsTrack.style.transition = 'none';
+            cardsTrack.classList.add('grabbing');
+            
+            // Adiciona classe para indicar que está arrastando
+            document.body.style.cursor = 'grabbing';
+            document.body.style.userSelect = 'none';
+        }
+
+        function handleMouseMove(e) {
+            if (!isMouseDown) return;
+            
+            e.preventDefault();
+            const deltaX = e.clientX - startX;
+            const deltaPercent = (deltaX / window.innerWidth) * 100;
+            
+            cardsTrack.style.transform = `translateX(${startTranslateX + deltaPercent}vw)`;
+        }
+
+        function handleMouseUp(e) {
+            if (!isMouseDown) return;
+            
+            isMouseDown = false;
+            cardsTrack.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            cardsTrack.classList.remove('grabbing');
+            
+            // Restaura o cursor e seleção de texto
+            document.body.style.cursor = '';
+            document.body.style.userSelect = '';
+            
+            const deltaX = e.clientX - startX;
+            const threshold = window.innerWidth * 0.2;
+            
+            // Aplica a navegação apenas se o arrasto for significativo
+            if (Math.abs(deltaX) > 10) {
+                if (deltaX > threshold && currentCard > 0) {
+                    previousCard();
+                } else if (deltaX < -threshold && currentCard < totalCards - 1) {
+                    nextCard();
+                } else {
+                    updateCardPosition();
+                }
+            } else {
+                // Se o movimento foi pequeno, apenas atualiza a posição sem navegar
+                updateCardPosition();
+            }
+        }
+
+        // Handler de Teclado
+        function handleKeyDown(e) {
+            // Não faz nada se o foco estiver em um campo de formulário
+            if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA' || document.activeElement.tagName === 'SELECT') {
+                return;
+            }
+            
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousCard();
+            } else if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextCard();
+            } else if (e.key >= '1' && e.key <= '8') {
+                e.preventDefault();
+                goToCard(parseInt(e.key) - 1);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                goToCard(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                goToCard(totalCards - 1);
+            }
+        }
+
+        // Otimizações para performance
+        window.addEventListener('resize', function() {
+            updateCardPosition();
+        });
+
+        // Suporte a swipe em dispositivos móveis - apenas para elementos que não são inputs
+        document.addEventListener('touchmove', function(e) {
+            if (isDragging && !e.target.matches('input, select, button, textarea')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>
