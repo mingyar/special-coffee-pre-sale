@@ -1,0 +1,47 @@
+/* Estilos para os indicadores de página - Desktop */
+.page-indicators {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+    padding: 10px 5px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.page-indicators .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+    display: block;
+}
+
+.page-indicators .dot.active {
+    background: white;
+    transform: scale(1.3);
+}
+
+/* Esconder em dispositivos móveis */
+@media (max-width: 1023px) {
+    .page-indicators {
+        display: none;
+    }
+}
+
+/* Remover estilos antigos */
+.dot::before {
+    content: none;
+}
+
+.dot.active::before {
+    content: none;
+}
