@@ -110,8 +110,12 @@
             transition: transform 0.5s ease-out;
             will-change: transform;
             position: relative;
-            overflow: hidden;
+            overflow: visible !important; /* Ensure it doesn't clip fixed elements */
             align-items: center; /* Centraliza verticalmente */
+            z-index: 1;
+            /* Ensure it doesn't create a new stacking context that would contain fixed elements */
+            transform-style: flat;
+            contain: layout style paint;
         }
         .cards-track.grabbing {
             cursor: grabbing;
@@ -419,11 +423,13 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            overflow: hidden;
             box-sizing: border-box;
             padding: 0;
             margin: 0;
             flex: 1 0 auto;
+            /* Ensure it doesn't create a new stacking context that would contain fixed elements */
+            transform: none;
+            will-change: auto;
         }
         
         .card-6 .form-group:not(:last-child) {
@@ -811,83 +817,7 @@
             font-size: 1.2em;
         }
 
-        /* Indicadores de Página - Desktop */
-        .page-indicators {
-            position: fixed;
-           right: 20px;
-           top: 50%;
-           transform: translateY(-50%);
-           display: flex;
-           flex-direction: column;
-           gap: 10px;
-           z-index: 1000;
-           padding: 10px 5px;
-           border-radius: 20px;
-           background: rgba(0, 0, 0, 0.3);
-           min-width: auto;
-           min-height: auto;
-           align-items: center;
-           justify-content: center;
-            bottom: 20px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 44px;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border: none;
-            padding: 0;
-        }
-
-        .dot::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active::before {
-            background: rgba(255,255,255,0.8);
-            transform: scale(1.5);
-        }
-
-        /* Áreas de Toque */
-        .page-indicators {
-            position: fixed;
-           right: 20px;
-           top: 50%;
-           transform: translateY(-50%);
-           display: flex;
-           flex-direction: column;
-           gap: 10px;
-           z-index: 1000;
-           padding: 10px 5px;
-           border-radius: 20px;
-           background: rgba(0, 0, 0, 0.3);
-           min-width: auto;
-           min-height: auto;
-           align-items: center;
-           justify-content: center;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            z-index: 1000;
-        }
-        
-        @media (max-width: 767px) {
-            .page-indicators {
-                display: none;
-            }
-        }
+        /* Os estilos dos indicadores de página foram movidos para dots-style.css */
 
         .touch-right {
             right: 0;
@@ -968,7 +898,7 @@
             animation: fadeIn 0.6s ease-out forwards;
         }
     </style>
-    <link rel="stylesheet" href="dots-fix.css">
+    <link rel="stylesheet" href="dots-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -1731,16 +1661,19 @@
             }
         }, { passive: false });
     </script>
-                <!-- Indicadores de Página -->
-                <div class="page-indicators">
-                    <button class="dot active" data-index="0" aria-label="Ir para o card 1"></button>
-                    <button class="dot" data-index="1" aria-label="Ir para o card 2"></button>
-                    <button class="dot" data-index="2" aria-label="Ir para o card 3"></button>
-                    <button class="dot" data-index="3" aria-label="Ir para o card 4"></button>
-                    <button class="dot" data-index="4" aria-label="Ir para o card 5"></button>
-                    <button class="dot" data-index="5" aria-label="Ir para o card 6"></button>
-                    <button class="dot" data-index="6" aria-label="Ir para o card 7"></button>
-                    <button class="dot" data-index="7" aria-label="Ir para o card 8"></button>
-                </div>
+            </div> <!-- Fechamento do cards-track -->
+            
+            <!-- Indicadores de Página -->
+            <div class="page-indicators">
+                <button class="dot active" data-index="0" aria-label="Ir para o card 1"></button>
+                <button class="dot" data-index="1" aria-label="Ir para o card 2"></button>
+                <button class="dot" data-index="2" aria-label="Ir para o card 3"></button>
+                <button class="dot" data-index="3" aria-label="Ir para o card 4"></button>
+                <button class="dot" data-index="4" aria-label="Ir para o card 5"></button>
+                <button class="dot" data-index="5" aria-label="Ir para o card 6"></button>
+                <button class="dot" data-index="6" aria-label="Ir para o card 7"></button>
+                <button class="dot" data-index="7" aria-label="Ir para o card 8"></button>
+            </div>
+        </div> <!-- Fechamento do main-container -->
 </body>
 </html>
