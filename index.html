@@ -42,14 +42,15 @@
             background: #2c3e50;
             color: white;
             text-align: center;
-            padding: 15px 12px;
-            padding-top: calc(15px + env(safe-area-inset-top, 0px));
+            padding: 10px 12px;
+            padding-top: calc(10px + env(safe-area-inset-top, 0px));
             font-size: 0.9em;
             font-weight: 600;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             z-index: 1000;
             width: 100%;
             box-sizing: border-box;
+            height: 50px; /* Altura fixa para o header */
         }
 
         .instruction-bar span {
@@ -88,9 +89,9 @@
         }
 
         .card {
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
-            padding: 20px;
+            padding: 70px 20px 40px; /* Ajuste do padding para acomodar o header */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -114,11 +115,12 @@
             max-width: 1200px;
             width: 100%;
             padding: 20px;
-            margin: 0 auto;
+            margin: auto; /* Centraliza verticalmente */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            flex: 1;
         }
         
         /* Estilos para os elementos de fundo dos cards */
