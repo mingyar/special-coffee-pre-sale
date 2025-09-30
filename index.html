@@ -1012,14 +1012,14 @@
         // Função para verificar carregamento de imagens
         function preloadImages() {
             const imageUrls = [
-                'https://picsum.photos/1920/1080?random=1',
-                'https://images.unsplash.com/photo-1605374179215-TaFr0XnSFFs?w=1920&q=80',
-                'https://images.unsplash.com/photo-1620706857370-AZJrf0D6Vfo?w=1920&q=80',
-                'https://images.unsplash.com/photo-1659886251794-irAoAvAHRyI?w=1920&q=80',
-                'https://images.unsplash.com/photo-1734007902996-0czHAdon3js?w=1920&q=80',
-                'https://images.unsplash.com/photo-1505459668311-KXW7vHADtwc?w=1920&q=80',
-                'https://images.unsplash.com/photo-1659021076840-H80RH1Hhvu8?w=1920&q=80',
-                'https://images.unsplash.com/photo-1643575855427-H4P5QIZnOz0?w=1920&q=80'
+                'assets/images/1080.jpg',
+                'assets/images/photo-1605374179215-TaFr0XnSFFs.jpg',
+                'assets/images/photo-1620706857370-AZJrf0D6Vfo.jpg',
+                'assets/images/photo-1659886251794-irAoAvAHRyI.jpg',
+                'assets/images/photo-1734007902996-0czHAdon3js.jpg',
+                'assets/images/photo-1505459668311-KXW7vHADtwc.jpg',
+                'assets/images/photo-1659021076840-H80RH1Hhvu8.jpg',
+                'assets/images/photo-1643575855427-H4P5QIZnOz0.jpg'
             ];
 
             imageUrls.forEach((url, index) => {
@@ -1086,19 +1086,19 @@
             // Aplicar o mesmo padrão do primeiro card para todos os cards
             document.querySelectorAll('.card').forEach((card, index) => {
                 const images = [
-                    'https://picsum.photos/id/1060/1920/1080',  // Café em grãos
-                    'https://images.unsplash.com/photo-1459755486867-b55449bb39ff?w=1920&q=80',   // Grãos de café selecionados para blend
-                    'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=1920&q=80',  // Máquina de torrar café profissional
-                    'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920&q=80',   // Plantação de café
-                    'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=1920&q=80',  // Café em embalagem de lote limitado
-                    'https://picsum.photos/id/1052/1920/1080',  // Imagem de mar (fallback)
-                    'https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?w=1920&q=80',  // Onda do mar poderosa
-                    'https://images.pexels.com/photos/561463/pexels-photo-561463.jpeg?auto=compress&cs=tinysrgb&w=1920'   // Vista do oceano no pôr do sol
+                    'assets/images/1080.jpg',  // Café em grãos
+                    'assets/images/photo-1459755486867-b55449bb39ff.jpg',   // Grãos de café selecionados para blend
+                    'assets/images/photo-1511920170033-f8396924c348.jpg',  // Máquina de torrar café profissional
+                    'assets/images/photo-1447933601403-0c6688de566e.jpg',   // Plantação de café
+                    'assets/images/photo-1514432324607-a09d9b4aefdd.jpg',  // Café em embalagem de lote limitado
+                    'assets/images/1080.jpg',  // Imagem de mar (fallback)
+                    'assets/images/photo-1532274402911-5a369e4c4bb5.jpg',  // Onda do mar poderosa
+                    'assets/images/pexels-photo-561463.jpeg'   // Vista do oceano no pôr do sol
                 ];
                 
                 // Se for o card 5 (Atenção!), usar a imagem fornecida diretamente
                 if (index === 5) {
-                    const waveImage = 'https://images.pexels.com/photos/416676/pexels-photo-416676.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                    const waveImage = 'assets/images/pexels-photo-416676.jpeg';
                     images[5] = waveImage;
                     
                     // Aplicar a imagem diretamente ao card
@@ -1129,7 +1129,7 @@
                 
                 // Se for o card 6 (índice 6), que é o card do formulário
                 if (index === 6) {
-                    const formImage = 'https://images.pexels.com/photos/9716777/pexels-photo-9716777.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                    const formImage = 'assets/images/pexels-photo-9716777.jpeg';
                     
                     // Aplicar a imagem diretamente ao card
                     const bgContainer = document.createElement('div');
@@ -1159,7 +1159,7 @@
                 
                 // Se for o card 7 (índice 7), que é o card de contato
                 if (index === 7) {
-                    const oceanImage = 'https://images.pexels.com/photos/561463/pexels-photo-561463.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                    const oceanImage = 'assets/images/pexels-photo-561463.jpeg';
                     
                     // Aplicar a imagem diretamente ao card
                     const bgContainer = document.createElement('div');
@@ -1210,7 +1210,7 @@
                 img.onerror = function() {
                     // Se houver erro ao carregar a imagem, usar fallback
                     console.error(`Erro ao carregar imagem para card ${index}:`, imageUrl);
-                    bgImage.style.backgroundImage = 'url(https://picsum.photos/id/1052/1920/1080)';
+                    bgImage.style.backgroundImage = 'url(\'assets/images/1080.jpg\')';
                 };
                 img.src = imageUrl;
                 
