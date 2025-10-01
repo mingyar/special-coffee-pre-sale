@@ -939,11 +939,11 @@
                 <p style="opacity: 0.7; margin-top: 20px;">👉 Deslize para descobrir</p>
             </div>
 
-            <!-- Card 1 - Blend Exclusivo -->
+            <!-- Card 1 - Blend Exclusivo (Introdução) -->
             <div class="card card-1">
                 <span class="emoji">⭐</span>
                 <h2>Blend Exclusivo</h2>
-                <p>Uma combinação única de grãos especiais<br>selecionados para uma experiência sensorial inigualável</p>
+                <p>Uma combinação única de grãos especiais selecionados para uma experiência sensorial inigualável</p>
                 
                 <div class="card-content">
                     <style>
@@ -953,6 +953,138 @@
                             width: 100%;
                             padding: 0 15px;
                             box-sizing: border-box;
+                        }
+                        
+                        /* Estilos compartilhados entre os cards */
+                        .info-grid {
+                            display: grid;
+                            gap: 8px;
+                            width: 100%;
+                            max-width: 800px;
+                            margin: 0 auto;
+                            box-sizing: border-box;
+                        }
+                        
+                        .info-box {
+                            background: rgba(255, 255, 255, 0.1);
+                            border-radius: 8px;
+                            padding: 10px 6px;
+                            text-align: center;
+                            transition: all 0.2s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.05);
+                        }
+                        
+                        .info-box:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                            background: rgba(255, 255, 255, 0.15);
+                        }
+                        
+                        .info-box p {
+                            margin: 5px 0 !important;
+                            line-height: 1.4;
+                            font-size: 0.92em;
+                            color: #fff;
+                        }
+                        
+                        .info-box p:first-child {
+                            font-size: 1.8em !important;
+                            margin: 0 0 8px 0 !important;
+                            line-height: 1;
+                        }
+                        
+                        .info-box p:nth-child(2) {
+                            font-weight: 600;
+                            font-size: 0.95em !important;
+                            margin-bottom: 5px !important;
+                            color: #fff;
+                        }
+                        
+                        .info-box p:last-child {
+                            opacity: 0.9;
+                            font-size: 0.9em;
+                            line-height: 1.4;
+                        }
+                        
+                        /* Estilo especial para a caixa de pontuação SCA */
+                        .info-box.sca-score {
+                            background: rgba(76, 175, 80, 0.2) !important;
+                            border: 1px solid rgba(76, 175, 80, 0.3) !important;
+                            position: relative;
+                            overflow: hidden;
+                            max-width: 100%;
+                        }
+                        
+                        .info-box.sca-score::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            height: 2px;
+                            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+                        }
+                        
+                        .info-box.sca-score p:first-child {
+                            font-size: 1.8em !important;
+                            margin: 0 0 5px 0 !important;
+                            font-weight: 700;
+                            color: #fff;
+                            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+                        }
+                        
+                        .info-box.sca-score p:last-child {
+                            font-size: 0.85em !important;
+                            opacity: 0.9;
+                            margin: 5px 0 0 0 !important;
+                            color: #e1f5e1;
+                        }
+                        
+                        .sensory-box {
+                            background: rgba(255, 255, 255, 0.1);
+                            border-radius: 12px;
+                            padding: 16px 12px;
+                            margin: 0 0 20px 0;
+                            width: 100%;
+                            box-sizing: border-box;
+                            text-align: center;
+                        }
+                        
+                        .sensory-box p {
+                            margin: 0;
+                            line-height: 1.6;
+                            font-size: 0.95em;
+                            color: #fff;
+                        }
+                        
+                        .sensory-box p span {
+                            font-size: 1.4em;
+                            display: inline-block;
+                            margin-right: 8px;
+                            vertical-align: middle;
+                        }
+                        
+                        .sensory-box p strong {
+                            font-size: 1.1em;
+                            color: #fff;
+                            font-weight: 600;
+                        }
+                        
+                        .sensory-content {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 15px;
+                        }
+                        
+                        .sensory-icon {
+                            font-size: 2em;
+                            line-height: 1;
+                            flex-shrink: 0;
+                        }
+                        
+                        .sensory-text {
+                            flex: 1;
                         }
                         
                         @media (max-width: 768px) {
@@ -1120,79 +1252,124 @@
                                 color: #e1f5e1;
                             }
                         }
-                        @media (min-width: 769px) {
-                            .card-1 {
-                                padding: 40px 20px !important;
+                        /* Estilos para ambos os cards (1 e 1.5) */
+                        .card-1,
+                        .card-1-5 {
+                            padding: 40px 20px !important;
+                            text-align: center;
+                        }
+                        
+                        .card-1 .emoji,
+                        .card-1-5 .emoji {
+                            font-size: 2.8em;
+                            margin-bottom: 15px;
+                            display: block;
+                        }
+                        
+                        .card-1 h2,
+                        .card-1-5 h2 {
+                            font-size: 2.2em;
+                            margin: 0 0 20px 0;
+                            line-height: 1.2;
+                            color: #fff;
+                            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+                        }
+                        
+                        .card-1 p,
+                        .card-1-5 p {
+                            font-size: 1.1em;
+                            margin: 0 auto 30px auto;
+                            max-width: 600px;
+                            line-height: 1.6;
+                            color: #fff;
+                            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+                        }
+                        
+                        /* Estilos específicos para o card 1 (Blend Exclusivo) */
+                        .card-1 .sensory-box {
+                            background: rgba(255, 255, 255, 0.1);
+                            border-radius: 12px;
+                            padding: 20px;
+                            margin: 0 auto 25px;
+                            width: 100%;
+                            max-width: 600px;
+                            box-sizing: border-box;
+                        }
+                        
+                        .card-1 .sca-score {
+                            max-width: 500px;
+                            margin: 0 auto !important;
+                            padding: 20px 15px !important;
+                        }
+                        
+                        /* Estilos específicos para o card 1.5 (Detalhes Técnicos) */
+                        .card-1-5 {
+                            background: rgba(0, 0, 0, 0.15) !important;
+                        }
+                        
+                        .card-1-5 .info-grid {
+                            grid-template-columns: repeat(3, 1fr);
+                            max-width: 900px;
+                            margin: 0 auto !important;
+                            padding: 0 10px;
+                        }
+                        
+                        .card-1-5 .info-box {
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            padding: 15px 10px;
+                        }
+                        
+                        /* Estilos responsivos */
+                        @media (max-width: 768px) {
+                            .card-1,
+                            .card-1-5 {
+                                padding: 30px 15px !important;
+                            }
+                            
+                            .card-1 .emoji,
+                            .card-1-5 .emoji {
+                                font-size: 2.5em;
+                                margin-bottom: 10px;
+                            }
+                            
+                            .card-1 h2,
+                            .card-1-5 h2 {
+                                font-size: 1.8em;
+                                margin-bottom: 15px;
+                            }
+                            
+                            .card-1 p,
+                            .card-1-5 p {
+                                font-size: 1em;
+                                margin-bottom: 20px;
+                            }
+                            
+                            .card-1-5 .info-grid {
+                                grid-template-columns: 1fr;
+                                gap: 10px;
+                                max-width: 400px;
+                            }
+                            
+                            .card-1 .sensory-box {
+                                padding: 15px 12px;
+                                margin-bottom: 20px;
+                            }
+                            
+                            .card-1 .sca-score {
+                                max-width: 100%;
+                                padding: 15px 10px !important;
+                            }
+                            
+                            .sensory-content {
+                                flex-direction: column;
                                 text-align: center;
                             }
-                            .card-1 .emoji {
-                                font-size: 2.8em;
-                                margin-bottom: 15px;
-                                display: block;
-                            }
-                            .card-1 h2 {
-                                font-size: 2.2em;
-                                margin: 0 0 20px 0;
-                                line-height: 1.2;
-                                color: #fff;
-                                text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-                            }
-                            .card-1 p {
-                                font-size: 1.1em;
-                                margin: 0 auto 30px auto;
-                                max-width: 600px;
-                                line-height: 1.6;
-                                color: #fff;
-                                text-shadow: 0 1px 1px rgba(0,0,0,0.3);
-                            }
-                            .info-grid {
-                                padding: 0 10px !important;
-                                max-width: 800px !important;
-                                margin: 0 auto 20px !important;
-                            }
-                            .sensory-box {
-                                background: rgba(255, 255, 255, 0.1);
-                                border-radius: 12px;
-                                padding: 16px 20px;
-                                margin: 0 auto 20px;
-                                width: 100%;
-                                max-width: 800px;
-                                box-sizing: border-box;
-                            }
-                            .sensory-content {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                gap: 15px;
-                            }
+                            
                             .sensory-icon {
-                                font-size: 2em;
-                                line-height: 1;
-                                flex-shrink: 0;
-                            }
-                            .sensory-text {
-                                flex: 1;
-                            }
-                            .sensory-text p {
-                                margin: 0;
-                                font-size: 1em;
-                                line-height: 1.6;
-                                color: #fff;
-                                text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-                            }
-                            .sensory-text p strong {
-                                font-size: 1.1em;
-                                color: #fff;
-                                font-weight: 600;
-                            }
-                            @media (max-width: 480px) {
-                                .sensory-content {
-                                    flex-direction: column;
-                                    text-align: center;
-                                }
-                                .sensory-icon {
-                                    margin-bottom: 8px;
-                                }
+                                margin-bottom: 8px;
                             }
                         }
                     </style>
@@ -1200,11 +1377,26 @@
                         <div class="sensory-content">
                             <div class="sensory-icon">👃</div>
                             <div class="sensory-text">
-                                <p><strong>Sensorial:</strong> Caramelo, leve chocolate, frutado com notas de morango e leve notas de águas de rosas no retrogosto</p>
+                                <p><strong>Perfil Sensorial:</strong> Caramelo, leve chocolate, frutado com notas de morango e leve notas de águas de rosas no retrogosto</p>
                             </div>
                         </div>
                     </div>
                     
+                    <div class="info-box sca-score">
+                        <p>🏆</p>
+                        <p>87 pontos SCA</p>
+                        <p>Excelência em qualidade reconhecida</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 1.5 - Detalhes Técnicos do Blend -->
+            <div class="card card-1-5">
+                <span class="emoji">🔍</span>
+                <h2>Detalhes Técnicos</h2>
+                <p>Conheça as características que tornam este blend único e especial</p>
+                
+                <div class="card-content">
                     <div class="info-grid">
                         <div class="info-box">
                             <p>🌱</p>
@@ -1222,12 +1414,6 @@
                             <p>📍</p>
                             <p>Regiões</p>
                             <p>Caparaó, Norte Pioneiro e Matas de Minas</p>
-                        </div>
-                        
-                        <div class="info-box sca-score">
-                            <p>🏆</p>
-                            <p>87 pontos SCA</p>
-                            <p>Excelência em qualidade</p>
                         </div>
                     </div>
                 </div>
