@@ -1335,10 +1335,23 @@
                             max-width: 500px;
                             margin: 15px auto 20px !important;
                             padding: 15px 20px 12px !important;
-                            background: rgba(255, 255, 255, 0.1);
+                            background: rgba(76, 175, 80, 0.2) !important;
+                            border: 1px solid rgba(76, 175, 80, 0.3) !important;
                             border-radius: 12px;
                             text-align: center;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            position: relative;
+                            overflow: hidden;
+                            box-sizing: border-box;
+                        }
+                        
+                        .card-1 .sca-score::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            height: 2px;
+                            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
                         }
                         
                         .card-1 .sca-score p {
@@ -1411,15 +1424,26 @@
                                 max-width: 400px;
                             }
                             
+                            .card-1 .sca-score {
+                                padding: 10px 12px 8px !important;
+                                margin: 10px auto 15px !important;
+                            }
+                            
+                            .card-1 .sca-score .score {
+                                font-size: 1.8em;
+                                margin: 3px 0 5px !important;
+                            }
+                            
                             .card-1 .sensory-box {
-                                padding: 12px 12px 10px;
+                                padding: 10px 8px 8px;
                                 margin: 0 auto 15px;
                                 max-width: 100%;
                             }
                             
                             .card-1 .sca-score {
                                 max-width: 100%;
-                                padding: 12px 8px 8px !important;
+                                padding: 10px 8px 8px !important;
+                                margin: 0 auto 15px !important;
                             }
                             
                             .sensory-content {
@@ -1441,10 +1465,10 @@
                         </div>
                     </div>
                     
-                    <div class="sca-score">
-                        <p>Classificação SCA (Specialty Coffee Association)</p>
-                        <div class="score">87 Pontos</div>
-                        <p class="label">Café Especial - Excelência em qualidade e sabor</p>
+                    <div class="info-box sca-score">
+                        <p>🏆</p>
+                        <p>87 pontos SCA</p>
+                        <p>Excelência em qualidade reconhecida</p>
                     </div>
                 </div>
             </div>
