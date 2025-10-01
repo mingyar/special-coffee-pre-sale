@@ -974,11 +974,35 @@
                 <div class="card-content">
                     <style>
                         .card-content {
-                            max-width: 800px;
+                            max-width: 1000px;
                             margin: 10px auto 0;
                             width: 100%;
                             padding: 0 15px 15px;
                             box-sizing: border-box;
+                        }
+                        
+                        .sensory-grid {
+                            display: grid;
+                            grid-template-columns: 1fr;
+                            gap: 15px;
+                            max-width: 800px;
+                            margin: 0 auto 15px;
+                        }
+                        
+                        @media (min-width: 768px) {
+                            .sensory-grid {
+                                grid-template-columns: 1fr 1fr;
+                                gap: 20px;
+                            }
+                            
+                            .sensory-box, 
+                            .info-box.sca-score {
+                                height: 100%;
+                                margin: 0 !important;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                            }
                         }
                         
                         /* Estilos compartilhados entre os cards */
@@ -1332,9 +1356,9 @@
                         }
                         
                         .card-1 .sca-score {
-                            max-width: 500px;
-                            margin: 15px auto 20px !important;
-                            padding: 15px 20px 12px !important;
+                            max-width: 100%;
+                            margin: 0 auto 20px !important;
+                            padding: 15px 12px 12px !important;
                             background: rgba(76, 175, 80, 0.2) !important;
                             border: 1px solid rgba(76, 175, 80, 0.3) !important;
                             border-radius: 12px;
@@ -1342,6 +1366,7 @@
                             position: relative;
                             overflow: hidden;
                             box-sizing: border-box;
+                            transition: all 0.3s ease;
                         }
                         
                         .card-1 .sca-score::before {
@@ -1434,16 +1459,17 @@
                                 margin: 3px 0 5px !important;
                             }
                             
-                            .card-1 .sensory-box {
-                                padding: 10px 8px 8px;
-                                margin: 0 auto 15px;
-                                max-width: 100%;
+                            .sensory-grid {
+                                grid-template-columns: 1fr;
+                                gap: 10px;
+                                padding: 0 5px;
                             }
                             
+                            .card-1 .sensory-box,
                             .card-1 .sca-score {
                                 max-width: 100%;
                                 padding: 10px 8px 8px !important;
-                                margin: 0 auto 15px !important;
+                                margin: 0 auto 10px !important;
                             }
                             
                             .sensory-content {
@@ -1456,19 +1482,21 @@
                             }
                         }
                     </style>
-                    <div class="sensory-box">
-                        <div class="sensory-content">
-                            <div class="sensory-icon">👃</div>
-                            <div class="sensory-text">
-                                <p><strong>Perfil Sensorial:</strong> Caramelo, leve chocolate, frutado com notas de morango e leve notas de águas de rosas no retrogosto</p>
+                    <div class="sensory-grid">
+                        <div class="sensory-box">
+                            <div class="sensory-content">
+                                <div class="sensory-icon">👃</div>
+                                <div class="sensory-text">
+                                    <p><strong>Perfil Sensorial:</strong> Caramelo, leve chocolate, frutado com notas de morango e leve notas de águas de rosas no retrogosto</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="info-box sca-score">
-                        <p>🏆</p>
-                        <p>87 pontos SCA</p>
-                        <p>Excelência em qualidade reconhecida</p>
+                        
+                        <div class="info-box sca-score">
+                            <p>🏆</p>
+                            <p>87 pontos SCA</p>
+                            <p>Excelência em qualidade reconhecida</p>
+                        </div>
                     </div>
                 </div>
             </div>
