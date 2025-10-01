@@ -982,23 +982,23 @@
                         }
                         
                         .sensory-grid {
-                            display: grid;
-                            grid-template-columns: 1fr;
+                            display: flex;
+                            flex-direction: column;
                             gap: 15px;
-                            max-width: 800px;
+                            max-width: 500px;
                             margin: 0 auto 15px;
+                            width: 100%;
                         }
                         
                         @media (min-width: 768px) {
                             .sensory-grid {
-                                grid-template-columns: 1fr 1fr;
-                                gap: 20px;
+                                max-width: 500px;
                             }
                             
                             .sensory-box, 
                             .info-box.sca-score {
-                                height: 100%;
-                                margin: 0 !important;
+                                width: 100%;
+                                margin: 0 auto 15px !important;
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
@@ -1356,9 +1356,9 @@
                         }
                         
                         .card-1 .sca-score {
-                            max-width: 100%;
-                            margin: 0 auto 20px !important;
-                            padding: 15px 12px 12px !important;
+                            max-width: 500px;
+                            margin: 0 auto 15px !important;
+                            padding: 15px 20px !important;
                             background: rgba(76, 175, 80, 0.2) !important;
                             border: 1px solid rgba(76, 175, 80, 0.3) !important;
                             border-radius: 12px;
@@ -1460,16 +1460,16 @@
                             }
                             
                             .sensory-grid {
-                                grid-template-columns: 1fr;
-                                gap: 10px;
                                 padding: 0 5px;
+                                max-width: 100%;
                             }
                             
                             .card-1 .sensory-box,
                             .card-1 .sca-score {
-                                max-width: 100%;
-                                padding: 10px 8px 8px !important;
-                                margin: 0 auto 10px !important;
+                                width: 100%;
+                                padding: 15px 12px 12px !important;
+                                margin: 0 auto 15px !important;
+                                box-sizing: border-box;
                             }
                             
                             .sensory-content {
@@ -1483,19 +1483,18 @@
                         }
                     </style>
                     <div class="sensory-grid">
+                        <div class="info-box sca-score">
+                            <p style="font-size: 1.5em; margin-bottom: 10px;">🏆 87 pontos SCA</p>
+                            <p style="font-size: 1em; margin: 0;">Excelência em qualidade reconhecida</p>
+                        </div>
+                        
                         <div class="sensory-box">
                             <div class="sensory-content">
                                 <div class="sensory-icon">👃</div>
                                 <div class="sensory-text">
-                                    <p><strong>Perfil Sensorial:</strong> Caramelo, leve chocolate, frutado com notas de morango e leve notas de águas de rosas no retrogosto</p>
+                                    <p style="margin: 0; font-size: 1em;"><strong style="font-size: 1em;">Perfil Sensorial:</strong> Caramelo, leve chocolate, frutado com notas de morango e leve notas de águas de rosas no retrogosto</p>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="info-box sca-score">
-                            <p>🏆</p>
-                            <p>87 pontos SCA</p>
-                            <p>Excelência em qualidade reconhecida</p>
                         </div>
                     </div>
                 </div>
