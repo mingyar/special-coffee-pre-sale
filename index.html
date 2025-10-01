@@ -239,14 +239,16 @@
         /* Card 0 - Header Principal */
         .card-0 { 
             position: relative;
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.85), rgba(247, 147, 30, 0.85));
+            color: white;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.8));
         }
-
+        
         /* Card 1 - Blend Exclusivo */
         .card-1 { 
             position: relative; 
             color: white;
             background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.8));
+            padding: 12vh 20px 8vh;
         }
 
         /* Card 2 - Torra Artesanal */
@@ -973,9 +975,9 @@
                     <style>
                         .card-content {
                             max-width: 800px;
-                            margin: 0 auto;
+                            margin: 10px auto 0;
                             width: 100%;
-                            padding: 0 15px;
+                            padding: 0 15px 15px;
                             box-sizing: border-box;
                         }
                         
@@ -1067,11 +1069,10 @@
                         .sensory-box {
                             background: rgba(255, 255, 255, 0.1);
                             border-radius: 12px;
-                            padding: 16px 12px;
-                            margin: 0 0 20px 0;
-                            width: 100%;
-                            box-sizing: border-box;
+                            padding: 12px 15px 10px;
+                            margin: 15px 0;
                             text-align: center;
+                            box-sizing: border-box;
                         }
                         
                         .sensory-box p {
@@ -1113,7 +1114,7 @@
                         
                         @media (max-width: 768px) {
                             .card-1 {
-                                padding: 30px 15px !important;
+                                padding: 10vh 15px 8vh !important;
                                 text-align: center;
                             }
                             .card-1 .emoji {
@@ -1168,11 +1169,16 @@
                             .sensory-box {
                                 background: rgba(255, 255, 255, 0.1);
                                 border-radius: 12px;
-                                padding: 16px 12px;
-                                margin: 0 0 20px 0;
-                                width: 100%;
+                                padding: 12px 12px 10px;
+                                margin: 15px 0;
                                 box-sizing: border-box;
                                 text-align: center;
+                            }
+                            @media (max-width: 768px) {
+                                .sensory-box {
+                                    padding: 16px 12px;
+                                    margin: 0 0 20px 0;
+                                }
                             }
                             .sensory-box p {
                                 margin: 0;
@@ -1279,7 +1285,7 @@
                         /* Estilos para ambos os cards (1 e 1.5) */
                         .card-1,
                         .card-1-5 {
-                            padding: 15vh 20px 5vh 20px !important; /* 15% do topo, 5% da base */
+                            padding: 12vh 20px 8vh 20px !important;
                             text-align: center;
                             display: flex;
                             flex-direction: column;
@@ -1318,17 +1324,40 @@
                         .card-1 .sensory-box {
                             background: rgba(255, 255, 255, 0.1);
                             border-radius: 12px;
-                            padding: 20px;
-                            margin: 0 auto 25px;
+                            padding: 12px 15px 10px;
+                            margin: 0 auto 15px;
                             width: 100%;
-                            max-width: 600px;
+                            max-width: 580px;
                             box-sizing: border-box;
                         }
                         
                         .card-1 .sca-score {
                             max-width: 500px;
-                            margin: 0 auto !important;
-                            padding: 20px 15px !important;
+                            margin: 15px auto 20px !important;
+                            padding: 15px 20px 12px !important;
+                            background: rgba(255, 255, 255, 0.1);
+                            border-radius: 12px;
+                            text-align: center;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        }
+                        
+                        .card-1 .sca-score p {
+                            margin: 5px 0 !important;
+                            line-height: 1.5;
+                        }
+                        
+                        .card-1 .sca-score .score {
+                            font-size: 2em;
+                            font-weight: 700;
+                            color: #ffd700;
+                            margin: 5px 0 8px !important;
+                            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                        }
+                        
+                        .card-1 .sca-score .label {
+                            font-size: 0.9em;
+                            opacity: 0.9;
+                            color: #e1f5e1;
                         }
                         
                         /* Estilos específicos para o card 1.5 (Detalhes Técnicos) */
@@ -1355,7 +1384,7 @@
                         @media (max-width: 768px) {
                             .card-1,
                             .card-1-5 {
-                                padding: 15vh 15px 5vh 15px !important;
+                                padding: 10vh 15px 8vh 15px !important;
                             }
                             
                             .card-1 .emoji,
@@ -1383,13 +1412,14 @@
                             }
                             
                             .card-1 .sensory-box {
-                                padding: 15px 12px;
-                                margin-bottom: 20px;
+                                padding: 12px 12px 10px;
+                                margin: 0 auto 15px;
+                                max-width: 100%;
                             }
                             
                             .card-1 .sca-score {
                                 max-width: 100%;
-                                padding: 15px 10px !important;
+                                padding: 12px 8px 8px !important;
                             }
                             
                             .sensory-content {
@@ -1411,10 +1441,10 @@
                         </div>
                     </div>
                     
-                    <div class="info-box sca-score">
-                        <p>🏆</p>
-                        <p>87 pontos SCA</p>
-                        <p>Excelência em qualidade reconhecida</p>
+                    <div class="sca-score">
+                        <p>Classificação SCA (Specialty Coffee Association)</p>
+                        <div class="score">87 Pontos</div>
+                        <p class="label">Café Especial - Excelência em qualidade e sabor</p>
                     </div>
                 </div>
             </div>
