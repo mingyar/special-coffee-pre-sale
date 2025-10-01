@@ -117,9 +117,11 @@
             height: 100vh;
             width: 100vw;
             overflow: hidden;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
+            right: 0;
+            bottom: 0;
         }
         /* Track de Cards */
         .cards-track {
@@ -129,10 +131,8 @@
             transition: transform 0.5s ease-out;
             will-change: transform;
             position: relative;
-            overflow: visible !important; /* Ensure it doesn't clip fixed elements */
-            align-items: center; /* Centraliza verticalmente */
+            overflow: hidden; /* Alterado para hidden para evitar barras de rolagem indesejadas */
             z-index: 1;
-            /* Ensure it doesn't create a new stacking context that would contain fixed elements */
             transform-style: flat;
             contain: layout style paint;
         }
@@ -142,34 +142,35 @@
         }
 
         .card {
+            height: 100vh;
             min-height: 100vh;
-            height: 100%;
-            width: 100%;
-            padding: 70px 20px 20px;
+            width: 100vw;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            box-sizing: border-box;
+            position: relative;
+            overflow-y: auto;
             text-align: center;
             color: white;
-            position: relative;
-            overflow: hidden;
-            box-sizing: border-box;
             z-index: 1;
             scroll-snap-align: start;
             margin: 0;
+            -webkit-overflow-scrolling: touch; /* Melhora o scroll em dispositivos iOS */
         }
         
-        /* Ajuste específico para o primeiro card */
         /* Removido ajuste específico para o primeiro card */
 
         .card-content {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
             width: 100%;
+            max-width: 1200px;
+            margin: auto; /* Centraliza vertical e horizontalmente */
             padding: 20px;
-            margin: 0 auto;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -581,11 +582,19 @@
         
         /* Responsividade */
         @media (max-width: 768px) {
+            .card {
+                height: 100vh;
+                min-height: -webkit-fill-available;
+                padding: 15px !important;
+                box-sizing: border-box;
+                overflow-y: auto;
+            }
+            
             .card-6 .form-container {
                 padding: 20px 15px;
                 margin: 0 auto;
-                width: calc(100% - 40px);
-                max-width: 100%;
+                width: 100%;
+                max-width: 400px;
             }
             
             .card-6 h2 {
@@ -855,31 +864,28 @@
         }
 
         /* Ajustes para dispositivos móveis */
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .card {
-                padding: 60px 15px 15px;
-                justify-content: flex-start;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            .card h1 {
-                font-size: 1.8rem;
-                margin: 10px 0 15px;
-                line-height: 1.3;
+                padding: 15px !important;
+                height: 100vh;
+                min-height: -webkit-fill-available;
+                box-sizing: border-box;
+                overflow-y: auto;
             }
             
             .card-content {
-                width: 100%;
-                max-width: 100%;
-                padding: 0 10px;
-                box-sizing: border-box;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 10px !important;
             }
             
             .card-main {
                 width: 100%;
                 max-width: 100%;
                 margin: 0 auto;
-                padding: 15px;
+                padding: 0;
             }
             
             .card p {
