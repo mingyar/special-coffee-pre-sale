@@ -113,28 +113,36 @@
         }
 
         /* Container Principal */
-        .main-container {
-            height: 100vh;
-            width: 100vw;
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
+        }
+
+        .main-container {
+            width: 100%;
+            height: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
         }
         /* Track de Cards */
         .cards-track {
             display: flex;
             width: 800vw; /* 8 cards x 100vw cada */
-            height: 100vh;
+            height: 100%;
             transition: transform 0.5s ease-out;
             will-change: transform;
             position: relative;
-            overflow: hidden; /* Alterado para hidden para evitar barras de rolagem indesejadas */
+            overflow: hidden;
             z-index: 1;
-            transform-style: flat;
-            contain: layout style paint;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
         .cards-track.grabbing {
             cursor: grabbing;
@@ -142,8 +150,8 @@
         }
 
         .card {
-            height: 100vh;
-            min-height: 100vh;
+            height: 100vh; /* Fallback para navegadores que não suportam custom properties */
+            height: calc(var(--vh, 1vh) * 100);
             width: 100vw;
             padding: 20px;
             display: flex;
@@ -152,13 +160,14 @@
             align-items: center;
             box-sizing: border-box;
             position: relative;
-            overflow-y: auto;
+            overflow: hidden;
             text-align: center;
             color: white;
             z-index: 1;
-            scroll-snap-align: start;
             margin: 0;
-            -webkit-overflow-scrolling: touch; /* Melhora o scroll em dispositivos iOS */
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
         
         /* Removido ajuste específico para o primeiro card */
@@ -168,7 +177,7 @@
             z-index: 2;
             width: 100%;
             max-width: 1200px;
-            margin: auto; /* Centraliza vertical e horizontalmente */
+            margin: 0 auto;
             padding: 20px;
             box-sizing: border-box;
             display: flex;
@@ -176,6 +185,9 @@
             justify-content: center;
             align-items: center;
             flex: 1;
+            height: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         
         /* Estilos para os elementos de fundo dos cards */
@@ -865,12 +877,21 @@
 
         /* Ajustes para dispositivos móveis */
         @media (max-width: 768px) {
+            html, body {
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                overflow: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+            
             .card {
+                height: 100vh; /* Fallback */
+                height: calc(var(--vh, 1vh) * 100);
                 padding: 15px !important;
-                height: 100vh;
-                min-height: -webkit-fill-available;
                 box-sizing: border-box;
-                overflow-y: auto;
+                overflow: hidden;
+                position: relative;
             }
             
             .card-content {
@@ -879,6 +900,8 @@
                 flex-direction: column;
                 justify-content: center;
                 padding: 10px !important;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
             
             .card-main {
@@ -1756,9 +1779,29 @@
             });
         }
 
-        // Inicialização
+        // Função para ajustar a altura dos cards
+        function adjustCardHeights() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+            
+            // Ajusta a altura de todos os cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.height = `${window.innerHeight}px`;
+            });
+        }
+        
+        // Ajusta a altura inicial
+        adjustCardHeights();
+        
+        // Adiciona listeners para redimensionamento e mudança de orientação
+        window.addEventListener('resize', adjustCardHeights);
+        window.addEventListener('orientationchange', adjustCardHeights);
+        
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM totalmente carregado');
+            // Ajusta novamente após o carregamento completo
+            adjustCardHeights();
+            console.log('DOM completamente carregado');
             
             // Primeiro, aplicar as imagens de fundo
             console.log('Aplicando imagens de fundo...');
