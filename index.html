@@ -1279,8 +1279,13 @@
                         /* Estilos para ambos os cards (1 e 1.5) */
                         .card-1,
                         .card-1-5 {
-                            padding: 40px 20px !important;
+                            padding: 15vh 20px 5vh 20px !important; /* 15% do topo, 5% da base */
                             text-align: center;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            min-height: 100vh;
+                            box-sizing: border-box;
                         }
                         
                         .card-1 .emoji,
@@ -1350,7 +1355,7 @@
                         @media (max-width: 768px) {
                             .card-1,
                             .card-1-5 {
-                                padding: 30px 15px !important;
+                                padding: 15vh 15px 5vh 15px !important;
                             }
                             
                             .card-1 .emoji,
