@@ -1037,18 +1037,6 @@
         <!-- Áreas de Toque -->
         <div class="touch-area touch-left" id="touchLeft"></div>
         <div class="touch-area touch-right" id="touchRight"></div>
-
-        <!-- Navegação por Pontos -->
-        <div class="navigation-dots" id="navigationDots">
-            <button class="dot active" data-index="0" aria-label="Slide 1"></button>
-            <button class="dot" data-index="1" aria-label="Slide 2"></button>
-            <button class="dot" data-index="2" aria-label="Slide 3"></button>
-            <button class="dot" data-index="3" aria-label="Slide 4"></button>
-            <button class="dot" data-index="4" aria-label="Slide 5"></button>
-            <button class="dot" data-index="5" aria-label="Slide 6"></button>
-            <button class="dot" data-index="6" aria-label="Slide 7"></button>
-            <button class="dot" data-index="7" aria-label="Slide 8"></button>
-        </div>
     </div>
 
     <script>
@@ -1056,7 +1044,6 @@
         let currentCard = 0;
         const totalCards = 8;
         const cardsTrack = document.getElementById('cardsTrack');
-        const dots = document.querySelectorAll('.dot');
         const touchLeft = document.getElementById('touchLeft');
         const touchRight = document.getElementById('touchRight');
         let startX = 0;
@@ -1346,14 +1333,7 @@
             // Keyboard Events
             document.addEventListener('keydown', handleKeyDown);
 
-            // Navegação por Dots
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    goToCard(index);
-                });
-            });
+            // A navegação por dots agora é gerenciada pelo navigation.js
 
             // Botões de Navegação Desktop
             const prevBtn = document.getElementById('prevBtn');
@@ -1494,21 +1474,9 @@
 
         // Funções de Navegação
         function updateCardPosition() {
-            updateDots();
-            
             const cardWidth = window.innerWidth;
             const translateX = -currentCard * cardWidth;
             cardsTrack.style.transform = `translateX(${translateX}px)`;
-            
-            dots.forEach((dot, index) => {
-                if (index === currentCard) {
-                    dot.classList.add('active');
-                    dot.setAttribute('aria-current', 'true');
-                } else {
-                    dot.classList.remove('active');
-                    dot.removeAttribute('aria-current');
-                }
-            });
             
             // Atualizar título da página
             const titles = [
@@ -1518,10 +1486,14 @@
                 'Origem Certificada',
                 'Lote Limitado',
                 'Oferta por Tempo Limitado',
-                'Faça sua Reserva',
-                'Entre em Contato'
+                'Garanta Já o Seu',
+                'Obrigado pelo Seu Interesse!'
             ];
-            document.title = titles[currentCard];
+            document.title = titles[currentCard] || 'Blend Especial - Pré-venda Exclusiva';
+            
+            // Disparar evento personalizado para notificar a navegação personalizada
+            const event = new CustomEvent('cardChanged', { detail: { currentCard } });
+            document.dispatchEvent(event);
         }
 
         function nextCard() {
@@ -1530,7 +1502,6 @@
                 updateCardPosition();
             }
         }
-
         function previousCard() {
             if (currentCard > 0) {
                 currentCard--;
@@ -1676,6 +1647,15 @@
                 e.preventDefault();
             }
         }, { passive: false });
+        
+        // Listener para eventos de navegação dos dots
+        document.addEventListener('goToCardEvent', function(e) {
+            const index = e.detail.index;
+            if (index >= 0 && index < totalCards) {
+                currentCard = index;
+                updateCardPosition();
+            }
+        });
     </script>
             </div> <!-- Fechamento do cards-track -->
             

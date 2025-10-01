@@ -9,9 +9,28 @@ const navigation = {
     init: function() {
         console.log('Configurando event listeners para navegação...');
         this.setupEventListeners();
-        console.log('Atualizando dot ativo...');
-        this.updateActiveDot();
+        this.syncWithMainCarousel();
         console.log('Navegação inicializada com sucesso!');
+    },
+    
+    // Sincroniza com o carrossel principal
+    syncWithMainCarousel: function() {
+        // Atualiza o slide atual com base no carrossel principal
+        const track = document.querySelector('.cards-track');
+        if (track) {
+            const transform = window.getComputedStyle(track).transform;
+            const matrix = new DOMMatrixReadOnly(transform);
+            this.currentSlide = Math.round(-matrix.m41 / window.innerWidth);
+            this.updateActiveDot();
+        }
+        
+        // Escuta por mudanças no carrossel principal
+        document.addEventListener('cardChanged', (e) => {
+            if (!this.isAnimating) {
+                this.currentSlide = e.detail.currentCard;
+                this.updateActiveDot();
+            }
+        });
     },
     
     // Configura os event listeners
@@ -24,20 +43,6 @@ const navigation = {
                 this.goToSlide(index);
             });
         });
-    },
-    
-    // Navega para o slide anterior
-    prevSlide: function() {
-        if (this.currentSlide > 0) {
-            this.goToSlide(this.currentSlide - 1);
-        }
-    },
-    
-    // Navega para o próximo slide
-    nextSlide: function() {
-        if (this.currentSlide < this.totalSlides - 1) {
-            this.goToSlide(this.currentSlide + 1);
-        }
     },
     
     // Navega para um slide específico
@@ -58,17 +63,9 @@ const navigation = {
         this.isAnimating = true;
         this.currentSlide = index;
         
-        // Atualiza a posição do track
-        const track = document.querySelector('.cards-track');
-        if (!track) {
-            console.error('Elemento .cards-track não encontrado no DOM.');
-            this.isAnimating = false;
-            return;
-        }
-        
-        console.log(`Aplicando transformação: translateX(-${this.currentSlide * 100}%)`);
-        track.style.transition = `transform ${this.animationDuration}ms ease`;
-        track.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+        // Dispara o evento de mudança de slide no carrossel principal
+        const event = new CustomEvent('goToCardEvent', { detail: { index } });
+        document.dispatchEvent(event);
         
         // Atualiza o dot ativo
         this.updateActiveDot();
