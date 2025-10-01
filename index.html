@@ -978,13 +978,20 @@
                             /* Estilos movidos para o bloco principal */
                             .info-grid {
                                 display: grid !important;
-                                grid-template-columns: 1fr 1fr;
-                                gap: 10px !important;
+                                grid-template-columns: 1fr;
+                                gap: 8px !important;
                                 padding: 0 2% !important;
                                 margin: 0 0 15px 0 !important;
                                 width: 100% !important;
                                 max-width: 100% !important;
                                 box-sizing: border-box;
+                            }
+                            @media (min-width: 768px) {
+                                .info-grid {
+                                    grid-template-columns: 1fr 1fr 1fr !important;
+                                    max-width: 800px !important;
+                                    margin: 0 auto 15px auto !important;
+                                }
                             }
                             .info-box {
                                 width: 100% !important;
@@ -1030,15 +1037,17 @@
                             }
                             .info-grid {
                                 display: grid;
-                                grid-template-columns: 1fr 1fr;
-                                gap: 10px;
+                                grid-template-columns: 1fr 1fr 1fr;
+                                gap: 8px;
                                 margin: 0 0 15px 0;
                                 width: 100%;
+                                max-width: 800px;
+                                margin: 0 auto 15px auto;
                             }
                             .info-box {
                                 background: rgba(255, 255, 255, 0.1);
-                                border-radius: 10px;
-                                padding: 15px 10px;
+                                border-radius: 8px;
+                                padding: 10px 6px;
                                 text-align: center;
                                 transition: all 0.2s ease;
                                 border: 1px solid rgba(255, 255, 255, 0.05);
@@ -1075,10 +1084,18 @@
                                 background: rgba(76, 175, 80, 0.2) !important;
                                 border: 1px solid rgba(76, 175, 80, 0.3) !important;
                                 grid-column: 1 / -1;
-                                margin-top: 5px !important;
-                                padding: 15px 10px !important;
+                                margin: 10px 0 0 0 !important;
+                                padding: 12px 10px !important;
                                 position: relative;
                                 overflow: hidden;
+                                max-width: 100%;
+                            }
+                            @media (min-width: 768px) {
+                                .info-box.sca-score {
+                                    margin: 15px auto 0 auto !important;
+                                    max-width: 800px;
+                                    padding: 12px 15px !important;
+                                }
                             }
                             .info-box.sca-score::before {
                                 content: '';
