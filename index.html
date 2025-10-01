@@ -941,43 +941,41 @@
 
             <!-- Card 1 - Blend Exclusivo -->
             <div class="card card-1">
-                <div style="text-align: center; margin: 25px 0 20px 0; width: 100%;">
-                    <span class="emoji" style="display: block; margin: 0 auto 10px; font-size: 2.8em;">⭐</span>
-                    <h2 style="margin: 0; font-size: 1.9em; font-weight: 600; line-height: 1.2;">Blend Exclusivo</h2>
-                </div>
+                <span class="emoji">⭐</span>
+                <h2>Blend Exclusivo</h2>
+                <p>Uma combinação única de grãos especiais<br>selecionados para uma experiência sensorial inigualável</p>
                 
-                <div style="max-width: 800px; margin: 0 auto; width: 100%; padding: 0 15px; box-sizing: border-box;">
+                <div class="card-content">
                     <style>
+                        .card-content {
+                            max-width: 800px;
+                            margin: 0 auto;
+                            width: 100%;
+                            padding: 0 15px;
+                            box-sizing: border-box;
+                        }
+                        
                         @media (max-width: 768px) {
                             .card-1 {
-                                padding: 40px 12px 25px 12px !important;
-                                display: flex !important;
-                                flex-direction: column !important;
-                                justify-content: flex-start !important;
-                                align-items: center !important;
-                                box-sizing: border-box;
-                            }
-                            .card-1 > div:first-child {
-                                margin-bottom: 15px !important;
-                                width: 100%;
-                                padding: 0 5px;
-                                box-sizing: border-box;
+                                padding: 30px 15px !important;
+                                text-align: center;
                             }
                             .card-1 .emoji {
-                                font-size: 2.8em !important;
-                                margin-bottom: 5px !important;
-                                display: block !important;
-                                line-height: 1;
+                                font-size: 2.5em;
+                                margin-bottom: 10px;
+                                display: block;
                             }
                             .card-1 h2 {
-                                font-size: 1.9em !important;
-                                margin: 0 0 15px 0 !important;
-                                line-height: 1.2 !important;
-                                text-align: center !important;
-                                font-weight: 600;
-                                color: #fff;
-                                text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+                                font-size: 1.8em;
+                                margin: 0 0 15px 0;
+                                line-height: 1.2;
                             }
+                            .card-1 p {
+                                font-size: 1em;
+                                margin: 0 0 20px 0;
+                                line-height: 1.5;
+                            }
+                            /* Estilos movidos para o bloco principal */
                             .info-grid {
                                 display: grid !important;
                                 grid-template-columns: 1fr 1fr;
@@ -1107,11 +1105,28 @@
                         }
                         @media (min-width: 769px) {
                             .card-1 {
-                                padding: 30px 20px !important;
+                                padding: 40px 20px !important;
+                                text-align: center;
+                            }
+                            .card-1 .emoji {
+                                font-size: 2.8em;
+                                margin-bottom: 15px;
+                                display: block;
                             }
                             .card-1 h2 {
-                                font-size: 2.2em !important;
-                                margin-bottom: 25px !important;
+                                font-size: 2.2em;
+                                margin: 0 0 20px 0;
+                                line-height: 1.2;
+                                color: #fff;
+                                text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+                            }
+                            .card-1 p {
+                                font-size: 1.1em;
+                                margin: 0 auto 30px auto;
+                                max-width: 600px;
+                                line-height: 1.6;
+                                color: #fff;
+                                text-shadow: 0 1px 1px rgba(0,0,0,0.3);
                             }
                             .info-grid {
                                 padding: 0 10px !important;
