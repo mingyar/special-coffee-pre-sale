@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Script de Navegação será movido para o final do body -->
     <style>
         /* Reset e Estilos Globais */
         * {
@@ -1492,8 +1493,10 @@
             document.title = titles[currentCard] || 'Blend Especial - Pré-venda Exclusiva';
             
             // Disparar evento personalizado para notificar a navegação personalizada
+            console.log('Disparando evento cardChanged para o slide:', currentCard);
             const event = new CustomEvent('cardChanged', { detail: { currentCard } });
             document.dispatchEvent(event);
+            console.log('Evento cardChanged disparado');
         }
 
         function nextCard() {
@@ -1656,11 +1659,16 @@
                 updateCardPosition();
             }
         });
+        
+        // Listener global para o evento cardChanged (apenas para depuração)
+        document.addEventListener('cardChanged', function(e) {
+            console.log('[DEBUG] cardChanged capturado no escopo global:', e.detail);
+        });
     </script>
             </div> <!-- Fechamento do cards-track -->
             
             <!-- Nova Navegação por Dots -->
-            <div class="nav-dots-container">
+            <div id="navDotsContainer" class="nav-dots-container">
                 <div class="nav-dots">
                     <button class="nav-dot active" data-index="0" aria-label="Ir para o card 1"></button>
                     <button class="nav-dot" data-index="1" aria-label="Ir para o card 2"></button>
@@ -1674,7 +1682,7 @@
             </div>
         </div> <!-- Fechamento do main-container -->
         
-        <!-- Scripts de Navegação -->
+        <!-- Script de Navegação -->
         <script src="navigation.js"></script>
     </body>
 </html>
