@@ -116,14 +116,14 @@
         html, body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
         }
 
         .main-container {
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             position: fixed;
             top: 0;
             left: 0;
@@ -134,19 +134,13 @@
         .cards-track {
             display: flex;
             width: 800vw; /* 8 cards x 100vw cada */
-            height: 100%;
+            height: 100vh;
             transition: transform 0.5s ease-out;
             will-change: transform;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            transform-style: preserve-3d;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            /* Garante que o track não cause rolagem horizontal */
-            max-width: 100vw;
-            margin: 0;
-            padding: 0;
+            transform-style: flat;
         }
         .cards-track.grabbing {
             cursor: grabbing;
@@ -154,10 +148,9 @@
         }
 
         .card {
-            height: 100vh; /* Fallback para navegadores que não suportam custom properties */
-            height: calc(var(--vh, 1vh) * 100);
+            flex: 0 0 100vw;
             width: 100vw;
-            max-width: 100%; /* Garante que não ultrapasse a largura da tela */
+            height: 100vh;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -165,14 +158,10 @@
             align-items: center;
             box-sizing: border-box;
             position: relative;
-            overflow-x: hidden; /* Evita rolagem horizontal */
+            overflow: hidden;
             text-align: center;
             color: white;
             z-index: 1;
-            margin: 0;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
         }
         
         /* Removido ajuste específico para o primeiro card */
@@ -185,6 +174,7 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -193,13 +183,6 @@
             height: 100%;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            overflow-x: hidden;
-        }
-        
-        /* Garante que imagens e outros elementos não ultrapassem a largura */
-        .card-content > * {
-            max-width: 100%;
-            height: auto;
         }
         
         /* Estilos para os elementos de fundo dos cards */
@@ -1791,23 +1774,24 @@
             });
         }
 
-        // Função para ajustar a altura e largura dos cards
+        // Função para ajustar o tamanho dos cards
         function adjustCardHeights() {
-            const vh = window.innerHeight * 0.01;
+            const vh = window.innerHeight;
             const vw = window.innerWidth;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
             
-            // Ajusta a altura e largura de todos os cards
+            // Ajusta o tamanho de todos os cards
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
-                card.style.height = `${window.innerHeight}px`;
                 card.style.width = `${vw}px`;
+                card.style.height = `${vh}px`;
+                card.style.flex = `0 0 ${vw}px`;
             });
             
             // Ajusta a largura do cards-track
             const cardsTrack = document.querySelector('.cards-track');
             if (cardsTrack) {
-                cardsTrack.style.width = `${cards.length * 100}vw`;
+                cardsTrack.style.width = `${cards.length * vw}px`;
+                cardsTrack.style.height = `${vh}px`;
             }
         }
         
