@@ -1963,6 +1963,72 @@
                 <p>Conheça as características que tornam este blend único e especial</p>
                 
                 <div class="card-content">
+                    <style>
+                        .card-1-5 .info-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                            gap: 20px;
+                            width: 100%;
+                            max-width: 1000px;
+                            margin: 0 auto;
+                            padding: 0 15px;
+                            box-sizing: border-box;
+                        }
+                        
+                        .card-1-5 .info-box {
+                            min-height: 200px;
+                            padding: 25px 20px !important;
+                            margin: 0 !important;
+                            display: flex !important;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            transition: all 0.3s ease;
+                        }
+                        
+                        .card-1-5 .info-box p:first-child {
+                            font-size: 2.5em !important;
+                            margin: 0 0 15px 0 !important;
+                            line-height: 1;
+                        }
+                        
+                        .card-1-5 .info-box p:nth-child(2) {
+                            font-size: 1.3em !important;
+                            font-weight: 600;
+                            margin: 0 0 10px 0 !important;
+                            color: #fff;
+                        }
+                        
+                        .card-1-5 .info-box p:last-child {
+                            font-size: 1em !important;
+                            line-height: 1.5;
+                            margin: 0 !important;
+                            opacity: 0.9;
+                        }
+                        
+                        @media (max-width: 768px) {
+                            .card-1-5 .info-grid {
+                                grid-template-columns: 1fr;
+                                max-width: 500px;
+                                padding: 0 10px;
+                            }
+                            
+                            .card-1-5 .info-box {
+                                min-height: 160px;
+                                padding: 20px 15px !important;
+                            }
+                            
+                            .card-1-5 .info-box p:first-child {
+                                font-size: 2em !important;
+                                margin-bottom: 10px !important;
+                            }
+                            
+                            .card-1-5 .info-box p:nth-child(2) {
+                                font-size: 1.2em !important;
+                            }
+                        }
+                    </style>
                     <div class="info-grid">
                         <div class="info-box">
                             <p>🌱</p>
