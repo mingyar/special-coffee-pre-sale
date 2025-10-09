@@ -1307,9 +1307,18 @@
                         }
                         
                         .info-box {
-                            background: rgba(255, 255, 255, 0.1);
-                            border-radius: 8px;
-                            padding: 10px 6px;
+                            background: rgba(255, 255, 255, 0.1) !important;
+                            border-radius: 12px !important;
+                            padding: 20px 15px !important;
+                            display: flex !important;
+                            flex-direction: column !important;
+                            align-items: center !important;
+                            justify-content: center !important;
+                            text-align: center !important;
+                            height: 100% !important;
+                            transition: all 0.3s ease !important;
+                            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                            backdrop-filter: blur(5px) !important;
                             text-align: center;
                             transition: all 0.2s ease;
                             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -1442,134 +1451,140 @@
                             flex: 1;
                         }
                         
+                        /* Estilos para dispositivos móveis */
                         @media (max-width: 768px) {
-                            .card-1 {
+                            .card-1,
+                            .card-1-5 {
                                 padding: 10vh 15px 8vh !important;
                                 text-align: center;
                             }
-                            .card-1 .emoji {
-                                font-size: 2.5em;
-                                margin-bottom: 10px;
-                                display: block;
+                            .card-1 .emoji,
+                            .card-1-5 .emoji {
+                                font-size: 2.5em !important;
+                                margin-bottom: 10px !important;
+                                display: block !important;
                             }
-                            .card-1 h2 {
-                                font-size: 1.8em;
-                                margin: 0 0 15px 0;
-                                line-height: 1.2;
+                            .card-1 h2,
+                            .card-1-5 h2 {
+                                font-size: 1.8em !important;
+                                margin: 0 0 15px 0 !important;
+                                line-height: 1.2 !important;
                             }
-                            .card-1 p {
-                                font-size: 1em;
-                                margin: 0 0 20px 0;
-                                line-height: 1.5;
+                            .card-1 p,
+                            .card-1-5 p {
+                                font-size: 1em !important;
+                                margin: 0 0 20px 0 !important;
+                                line-height: 1.5 !important;
                             }
-                            /* Estilos movidos para o bloco principal */
                             .info-grid {
                                 display: grid !important;
-                                grid-template-columns: 1fr;
-                                gap: 8px !important;
-                                padding: 0 2% !important;
-                                margin: 0 0 15px 0 !important;
+                                grid-template-columns: 1fr !important;
+                                gap: 10px !important;
+                                padding: 0 15px !important;
+                                margin: 0 auto 15px auto !important;
                                 width: 100% !important;
                                 max-width: 100% !important;
-                                box-sizing: border-box;
+                                box-sizing: border-box !important;
                             }
-                            @media (min-width: 768px) {
-                                .info-grid {
-                                    grid-template-columns: 1fr 1fr 1fr !important;
-                                    max-width: 800px !important;
-                                    margin: 0 auto 15px auto !important;
-                                }
+                        }
+                        
+                        /* Estilos para desktop */
+                        @media (min-width: 769px) {
+                            .info-grid {
+                                grid-template-columns: repeat(3, 1fr) !important;
+                                max-width: 900px !important;
+                                margin: 0 auto 20px auto !important;
+                                padding: 0 15px !important;
                             }
+                        }
+                            /* Info Box Styles */
                             .info-box {
                                 width: 100% !important;
-                                margin: 0 !important;
-                                padding: 12px 8px !important;
-                                border-radius: 8px !important;
-                                background: rgba(255, 255, 255, 0.08) !important;
-                                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                                box-sizing: border-box;
-                                transition: all 0.2s ease;
-                                text-align: center;
+                                max-width: 100% !important;
+                                margin: 0 auto 15px auto !important;
+                                padding: 20px 15px !important;
+                                box-sizing: border-box !important;
+                                border-radius: 12px !important;
+                                background: rgba(255, 255, 255, 0.1) !important;
+                                border: 1px solid rgba(255, 255, 255, 0.05) !important;
+                                box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+                                transition: all 0.3s ease !important;
+                                text-align: center !important;
                             }
+                            
                             .info-box:hover {
                                 transform: translateY(-2px);
-                                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+                                box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+                                background: rgba(255, 255, 255, 0.15) !important;
                             }
-                            /* Estilos da caixa sensorial movidos para o bloco principal */
+                            
+                            /* Sensory Box Styles */
                             .sensory-box {
-                                background: rgba(255, 255, 255, 0.1);
-                                border-radius: 12px;
-                                padding: 12px 12px 10px;
-                                margin: 15px 0;
-                                box-sizing: border-box;
-                                text-align: center;
+                                background: rgba(255, 255, 255, 0.1) !important;
+                                border-radius: 12px !important;
+                                padding: 16px 12px !important;
+                                margin: 15px 0 20px 0 !important;
+                                box-sizing: border-box !important;
+                                text-align: center !important;
                             }
-                            @media (max-width: 768px) {
-                                .sensory-box {
-                                    padding: 16px 12px;
-                                    margin: 0 0 20px 0;
-                                }
-                            }
+                            
                             .sensory-box p {
-                                margin: 0;
-                                line-height: 1.6;
-                                font-size: 0.95em;
-                                color: #fff;
+                                margin: 0 0 8px 0 !important;
+                                line-height: 1.6 !important;
+                                font-size: 0.95em !important;
+                                color: #fff !important;
                             }
+                            
+                            .sensory-box p:last-child {
+                                margin-bottom: 0 !important;
+                            }
+                            
                             .sensory-box p span {
-                                font-size: 1.4em;
-                                display: inline-block;
-                                margin-right: 8px;
-                                vertical-align: middle;
+                                font-size: 1.4em !important;
+                                display: inline-block !important;
+                                margin-right: 8px !important;
+                                vertical-align: middle !important;
                             }
-                            .sensory-box p strong {
-                                font-size: 1.1em;
-                                color: #fff;
-                                font-weight: 600;
-                            }
+                            
+                            /* Info Grid Layout */
                             .info-grid {
-                                display: grid;
-                                grid-template-columns: 1fr 1fr 1fr;
-                                gap: 8px;
-                                margin: 0 0 15px 0;
-                                width: 100%;
-                                max-width: 800px;
-                                margin: 0 auto 15px auto;
+                                display: grid !important;
+                                grid-template-columns: repeat(3, 1fr) !important;
+                                gap: 15px !important;
+                                width: 100% !important;
+                                max-width: 900px !important;
+                                margin: 0 auto 20px auto !important;
+                                padding: 0 15px !important;
+                                box-sizing: border-box !important;
                             }
-                            .info-box {
-                                background: rgba(255, 255, 255, 0.1);
-                                border-radius: 8px;
-                                padding: 10px 6px;
-                                text-align: center;
-                                transition: all 0.2s ease;
-                                border: 1px solid rgba(255, 255, 255, 0.05);
-                            }
-                            .info-box:hover {
-                                transform: translateY(-2px);
-                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                                background: rgba(255, 255, 255, 0.15);
-                            }
+                            
+                            /* Info Box Paragraphs */
                             .info-box p {
-                                margin: 5px 0 !important;
-                                line-height: 1.4;
-                                font-size: 0.92em;
-                                color: #fff;
+                                margin: 5px 0 0 0 !important;
+                                font-size: 0.95em !important;
+                                color: #fff !important;
+                                font-weight: 500 !important;
+                                line-height: 1.4 !important;
+                                text-align: center !important;
+                                width: 100% !important;
                             }
+                            
                             .info-box p:first-child {
                                 font-size: 1.8em !important;
                                 margin: 0 0 8px 0 !important;
-                                line-height: 1;
+                                line-height: 1 !important;
                             }
                             .info-box p:nth-child(2) {
-                                font-weight: 600;
+                                font-weight: 600 !important;
                                 font-size: 0.95em !important;
                                 margin-bottom: 5px !important;
-                                color: #fff;
+                                color: #fff !important;
                             }
                             .info-box p:last-child {
-                                opacity: 0.9;
-                                font-size: 0.9em;
-                                line-height: 1.4;
+                                opacity: 0.9 !important;
+                                font-size: 0.9em !important;
+                                line-height: 1.4 !important;
+                                margin-bottom: 0 !important;
                             }
                             /* Estilo especial para a caixa de pontuação SCA */
                             .info-box.sca-score {
@@ -1652,6 +1667,16 @@
                             background: rgba(255, 255, 255, 0.1) !important;
                             border: 1px solid rgba(255, 255, 255, 0.1) !important;
                             border-radius: 12px !important;
+                            padding: 20px 15px !important;
+                            margin: 0 auto 15px auto !important;
+                            display: flex !important;
+                            flex-direction: column !important;
+                            align-items: center !important;
+                            justify-content: center !important;
+                            text-align: center !important;
+                            height: 100% !important;
+                            transition: all 0.3s ease !important;
+                            backdrop-filter: blur(5px) !important;
                             padding: 20px !important;
                             margin: 0 auto 20px !important;
                             max-width: 500px !important;
@@ -1756,16 +1781,25 @@
                         }
                         
                         .card-1-5 .info-grid {
+                            display: grid;
                             grid-template-columns: repeat(3, 1fr);
+                            gap: 15px;
                             max-width: 900px;
+                            width: 100%;
                             margin: 0 auto !important;
-                            padding: 0 10px;
+                            padding: 0 15px;
+                            box-sizing: border-box;
                         }
                         
                         .card-1-5 .info-box {
-                            height: 100%;
-                            display: flex;
-                            flex-direction: column;
+                            height: 100% !important;
+                            display: flex !important;
+                            flex-direction: column !important;
+                            align-items: center !important;
+                            justify-content: center !important;
+                            text-align: center !important;
+                            padding: 25px 15px !important;
+                            margin: 0 !important;
                             justify-content: center;
                             padding: 15px 10px;
                         }
@@ -1806,9 +1840,18 @@
                             }
                             
                             .card-1-5 .info-grid {
-                                grid-template-columns: 1fr;
-                                gap: 10px;
-                                max-width: 400px;
+                                grid-template-columns: 1fr !important;
+                                gap: 15px !important;
+                                max-width: 100% !important;
+                                padding: 0 20px !important;
+                            }
+                            
+                            .card-1-5 .info-box {
+                                width: 100% !important;
+                                max-width: 100% !important;
+                                margin: 0 auto !important;
+                                padding: 15px !important;
+                                box-sizing: border-box !important;
                             }
                             
                             .card-1 .sca-score {
