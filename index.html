@@ -1657,6 +1657,8 @@
                                 overflow: hidden;
                                 max-width: 100%;
                             }
+                            
+                            /* Estilos específicos para desktop */
                             @media (min-width: 768px) {
                                 .info-box.sca-score {
                                     margin: 15px auto 0 auto !important;
@@ -2224,7 +2226,7 @@
     <script>
         // Variáveis Globais
         let currentCard = 0;
-        const totalCards = 8;
+        const totalCards = document.querySelectorAll('.card').length;
         const cardsTrack = document.getElementById('cardsTrack');
         const touchLeft = document.getElementById('touchLeft');
         const touchRight = document.getElementById('touchRight');
@@ -2487,37 +2489,35 @@
         window.addEventListener('resize', adjustCardHeights);
         window.addEventListener('orientationchange', adjustCardHeights);
         
+        // Inicialização quando o DOM estiver pronto
         document.addEventListener('DOMContentLoaded', function() {
-            // Ajusta novamente após o carregamento completo
-            adjustCardHeights();
             console.log('DOM completamente carregado');
             
-            // Primeiro, aplicar as imagens de fundo
+            // Ajusta as alturas dos cards
+            adjustCardHeights();
+            
+            // Aplica as imagens de fundo
             console.log('Aplicando imagens de fundo...');
             applyBackgroundImages();
             
-            // Verificar se as imagens foram aplicadas
+            // Verifica as imagens de fundo após um pequeno atraso
             setTimeout(() => {
-                console.log('Verificando imagens de fundo...');
-                document.querySelectorAll('.card').forEach((card, index) => {
-                    const bgImage = card.querySelector('.card-bg-image');
-                    console.log(`Card ${index}:`, {
-                        hasBgContainer: !!card.querySelector('.card-bg-container'),
-                        hasBgImage: !!bgImage,
-                        bgImageStyle: bgImage ? bgImage.style.backgroundImage : 'none',
-                        bgGradient: card.querySelector('.card-bg-gradient').style.backgroundImage
-                    });
-                });
+                checkBackgroundImages();
+                checkBackgroundImagesLoaded();
+                
+                // Log para depuração
+                console.log('Total de cards encontrados:', totalCards);
+                console.log('Cards no DOM:', document.querySelectorAll('.card').length);
             }, 500);
             
-            // Depois, pré-carregar as imagens
+            // Pré-carrega as imagens
             preloadImages();
             
-            // Configurar o restante
-            updateCardPosition();
+            // Configura os listeners de toque e navegação
             setupEventListeners();
             setupForm();
             setupTouchAreas();
+            updateCardPosition();
             
             // Adiciona classe de animação após o carregamento
             setTimeout(() => {
@@ -2528,9 +2528,15 @@
                 });
             }, 100);
         });
+        
+        // Melhorar a navegação por toque
+        document.addEventListener('touchstart', handleTouchStart, { passive: true });
+        document.addEventListener('touchmove', handleTouchMove, { passive: false });
+        document.addEventListener('touchend', handleTouchEnd, { passive: true });
 
         // Configuração dos Event Listeners
         function setupEventListeners() {
+            console.log('Configurando event listeners...');
             // Touch Events
             cardsTrack.addEventListener('touchstart', handleTouchStart, { passive: false });
             cardsTrack.addEventListener('touchmove', handleTouchMove, { passive: false });
@@ -2710,9 +2716,13 @@
         }
 
         function nextCard() {
+            console.log('Próximo card. Atual:', currentCard, 'Total:', totalCards - 1);
             if (currentCard < totalCards - 1) {
                 currentCard++;
+                console.log('Indo para o card:', currentCard);
                 updateCardPosition();
+            } else {
+                console.log('Já está no último card');
             }
         }
         function previousCard() {
@@ -2758,13 +2768,18 @@
             
             const currentX = e.changedTouches[0].clientX;
             const deltaX = currentX - startX;
-            const threshold = window.innerWidth * 0.2;
+            const threshold = window.innerWidth * 0.15; // Reduzido o threshold para facilitar a navegação
+            
+            console.log('Touch end - deltaX:', deltaX, 'threshold:', threshold, 'currentCard:', currentCard);
             
             if (deltaX > threshold && currentCard > 0) {
+                console.log('Navegando para o card anterior');
                 previousCard();
             } else if (deltaX < -threshold && currentCard < totalCards - 1) {
+                console.log('Navegando para o próximo card');
                 nextCard();
             } else {
+                console.log('Voltando para a posição atual');
                 updateCardPosition();
             }
         }
