@@ -1956,98 +1956,143 @@
                 </div>
             </div>
 
-            <!-- Card 1.5 - Detalhes Técnicos do Blend -->
+            <!-- Card 1.5 - Variedades -->
             <div class="card card-1-5">
-                <span class="emoji">🔍</span>
-                <h2>Detalhes Técnicos</h2>
-                <p>Conheça as características que tornam este blend único e especial</p>
+                <span class="emoji">🌱</span>
+                <h2>Variedades</h2>
+                <p>Conheça as variedades selecionadas para este blend exclusivo</p>
                 
                 <div class="card-content">
                     <style>
-                        .card-1-5 .info-grid {
-                            display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                            gap: 20px;
-                            width: 100%;
-                            max-width: 1000px;
+                        .card-1-5, .card-1-6, .card-1-7 {
+                            padding: 12vh 15px 8vh !important;
+                        }
+                        
+                        .card-1-5 .card-content,
+                        .card-1-6 .card-content,
+                        .card-1-7 .card-content {
+                            max-width: 600px;
                             margin: 0 auto;
-                            padding: 0 15px;
-                            box-sizing: border-box;
-                        }
-                        
-                        .card-1-5 .info-box {
-                            min-height: 200px;
-                            padding: 25px 20px !important;
-                            margin: 0 !important;
-                            display: flex !important;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
+                            padding: 20px;
                             text-align: center;
-                            transition: all 0.3s ease;
                         }
                         
-                        .card-1-5 .info-box p:first-child {
-                            font-size: 2.5em !important;
-                            margin: 0 0 15px 0 !important;
-                            line-height: 1;
+                        .card-1-5 .info-box,
+                        .card-1-6 .info-box,
+                        .card-1-7 .info-box {
+                            background: rgba(255, 255, 255, 0.1);
+                            border-radius: 15px;
+                            padding: 30px 25px;
+                            margin: 0 auto;
+                            max-width: 500px;
+                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                            backdrop-filter: blur(5px);
+                            border: 1px solid rgba(255, 255, 255, 0.15);
                         }
                         
-                        .card-1-5 .info-box p:nth-child(2) {
-                            font-size: 1.3em !important;
-                            font-weight: 600;
+                        .card-1-5 .emoji,
+                        .card-1-6 .emoji,
+                        .card-1-7 .emoji {
+                            font-size: 3em !important;
+                            margin-bottom: 15px !important;
+                            display: block;
+                        }
+                        
+                        .card-1-5 h2,
+                        .card-1-6 h2,
+                        .card-1-7 h2 {
+                            font-size: 2em !important;
                             margin: 0 0 10px 0 !important;
-                            color: #fff;
+                            color: #fff !important;
                         }
                         
-                        .card-1-5 .info-box p:last-child {
-                            font-size: 1em !important;
-                            line-height: 1.5;
-                            margin: 0 !important;
-                            opacity: 0.9;
+                        .card-1-5 p,
+                        .card-1-6 p,
+                        .card-1-7 p {
+                            font-size: 1.1em !important;
+                            line-height: 1.6 !important;
+                            margin: 0 0 20px 0 !important;
+                            color: rgba(255, 255, 255, 0.9) !important;
+                        }
+                        
+                        .card-1-5 .info-box p:last-child,
+                        .card-1-6 .info-box p:last-child,
+                        .card-1-7 .info-box p:last-child {
+                            font-size: 1.2em !important;
+                            line-height: 1.6 !important;
+                            margin: 20px 0 0 0 !important;
+                            padding: 15px;
+                            background: rgba(0, 0, 0, 0.2);
+                            border-radius: 10px;
+                            font-weight: 500;
                         }
                         
                         @media (max-width: 768px) {
-                            .card-1-5 .info-grid {
-                                grid-template-columns: 1fr;
-                                max-width: 500px;
-                                padding: 0 10px;
+                            .card-1-5, .card-1-6, .card-1-7 {
+                                padding: 10vh 15px 6vh !important;
                             }
                             
-                            .card-1-5 .info-box {
-                                min-height: 160px;
-                                padding: 20px 15px !important;
+                            .card-1-5 .info-box,
+                            .card-1-6 .info-box,
+                            .card-1-7 .info-box {
+                                padding: 25px 20px;
+                                margin: 0 10px;
                             }
                             
-                            .card-1-5 .info-box p:first-child {
-                                font-size: 2em !important;
-                                margin-bottom: 10px !important;
+                            .card-1-5 h2,
+                            .card-1-6 h2,
+                            .card-1-7 h2 {
+                                font-size: 1.8em !important;
                             }
                             
-                            .card-1-5 .info-box p:nth-child(2) {
-                                font-size: 1.2em !important;
+                            .card-1-5 p,
+                            .card-1-6 p,
+                            .card-1-7 p {
+                                font-size: 1em !important;
+                            }
+                            
+                            .card-1-5 .info-box p:last-child,
+                            .card-1-6 .info-box p:last-child,
+                            .card-1-7 .info-box p:last-child {
+                                font-size: 1.1em !important;
+                                padding: 12px;
                             }
                         }
                     </style>
-                    <div class="info-grid">
-                        <div class="info-box">
-                            <p>🌱</p>
-                            <p>Variedades</p>
-                            <p>Catuaí vermelho, Catucaí e Caturra</p>
-                        </div>
-                        
-                        <div class="info-box">
-                            <p>⚙️</p>
-                            <p>Processos</p>
-                            <p>Natural em terreiro suspenso e fermentado</p>
-                        </div>
-                        
-                        <div class="info-box">
-                            <p>📍</p>
-                            <p>Regiões</p>
-                            <p>Caparaó, Norte Pioneiro e Matas de Minas</p>
-                        </div>
+                    <div class="info-box">
+                        <p>As variedades selecionadas trazem características únicas para o blend:</p>
+                        <p>Catuaí vermelho, Catucaí e Caturra</p>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Card 1.6 - Processos -->
+            <div class="card card-1-6">
+                <span class="emoji">⚙️</span>
+                <h2>Processos</h2>
+                <p>Métodos cuidadosamente escolhidos para realçar as melhores qualidades</p>
+                
+                <div class="card-content">
+                    <div class="info-box">
+                        <p>Nossos grãos passam por processos especiais de preparo:</p>
+                        <p>Natural em terreiro suspenso e fermentado</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 1.7 - Regiões -->
+            <div class="card card-1-7">
+                <span class="emoji">📍</span>
+                <h2>Regiões</h2>
+                <p>As melhores origens para um sabor inigualável</p>
+                
+                <div class="card-content">
+                    <div class="info-box">
+                        <p>Selecionamos grãos das melhores regiões produtoras:</p>
+                        <p>Caparaó, Norte Pioneiro e Matas de Minas</p>
+                    </div>
+                </div>
+            </div>
                 </div>
             </div>
 
